@@ -1,0 +1,146 @@
+body {
+    background-color: #156a19;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+h5,h6 {
+    font-weight: bold;
+}
+
+p,span {
+    margin: 0;
+}
+
+.caixa-controle {
+    background-color: #cfcfcf;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    height: 550px;
+}
+
+.icon-caixa-controle {
+    background-color: #66666632;
+    font-size: 15px;
+    border-radius: 15px;
+    height: 20px;
+    width: 20px;
+    
+}
+
+.caixa-controle h6 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.caixa-controle div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fafafa;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+
+.img-banner {
+    border-radius: 15px;
+    height: 230px;
+    width: 550px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+
+}
+
+.alerta {
+    background-color: #f9faf9;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+
+.painel-principal {
+    background-color: #CFCFCF;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin-left: 15px;
+    height: 605px;
+}
+
+
+.caixa-sensor {
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    width: 140px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.caixa-sensor p {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #666;
+}
+
+.caixa-sensor span {
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 2px;
+}
+
+.caixa-sensor i {
+    align-self: center;
+}
+
+.caixa-previsao {
+    background-color: #fafafa2e;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.caixa-previsao p {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.caixa-previsao h6 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.caixa-previsao .dia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #444;
+}
+
+.caixa-previsao .dia i {
+    font-size: 20px;
+    margin: 5px 0;
+    color: #f39c12;
+}
+
+.caixa-historico {
+    background-color: #fafafab0;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.caixa-historico table {
+    font-size: 14px;
+}
+
+.caixa-historico th {
+    background: #f0f2f0;
+    font-weight: bold;
+}
