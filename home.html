@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="generator" content="1.0">
+    <title>SafraTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/css/bootstrap5-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/custon.css">
+    <link rel="stylesheet" href="css/sidebars.css">
+
+    <style>
+        /* Estilo para garantir que os gráficos apareçam */
+        #chart_area_div {
+            width: 100%;
+            height: 350px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #chart_div {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Dashboard Harmony</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search"
+            aria-label="Search">
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="#">Sign out</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3 sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/admin/home.php">
+                                <i class="bi bi-house"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+                                data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                                Usuários
+                            </button>
+                            <div class="collapse" id="dashboard-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="/admin/cadastro-usuario.php"
+                                            class="link-dark d-inline-flex text-decoration-none rounded">Cadastro</a>
+                                    </li>
+                                    <li><a href="/admin/cadastro-listar.php"
+                                            class="link-dark d-inline-flex text-decoration-none rounded">Listar</a></li>
+                                    <li><a href="#"
+                                            class="link-dark d-inline-flex text-decoration-none rounded">Monthly</a>
+                                    </li>
+                                    <li><a href="#"
+                                            class="link-dark d-inline-flex text-decoration-none rounded">Annually</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-file-earmark"></i>
+                                Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-cart"></i>
+                                Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-people"></i>
+                                Customers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-graph-up"></i>
+                                Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-layers"></i>
+                                Integrations
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                        <span>Saved reports</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <i class="bi bi-plus-circle"></i>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-file-text"></i>
+                                Current month
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-file-text"></i>
+                                Last quarter
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-file-text"></i>
+                                Social engagement
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-file-text"></i>
+                                Year-end sale
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <div class="row mt-3 w-100">
+
+                        <!--caixa do lado esquerdo-->
+                        <div class="col-md-3">
+                            <!--caixa1 pro alertas-->
+                            <div class="caixa-controleBB p-3">
+                                <!-- Alertas -->
+                                <div
+                                    class="mt-4 text-center p-3 d-flex flex-column justify-content-center align-items-center h-100">
+                                    <img src="img/alerta.png" class="img-alertaBB" alt="Ícone de alerta">
+                                    <div>
+                                        <p class="textinhoBB">Sem alertas no momento</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- caixa2-->
+                            <div class="caixa-controle p-3">
+                                <!-- historico -->
+                                <div class="alerta mt-4 text-center p-3">
+                                    <i class="fa-solid fa-triangle-exclamation fa-2x text-success"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Container que ocupa o espaço restante -->
+                        <div class="col-md-9">
+                            <div class="container-principalBB p-4">
+
+                                <!-- grafico 1 -->
+                                <div id="chart_area_div"></div>
+
+                                <!-- grafico 2 -->
+                                <div id="chart_div"></div>
+
+                                <!-- grafico 3 -->
+                                 <div id="donut_single"></div>
+
+                                <div class="col-md-3 caixa-previsao p-3">
+                                    <h6>Previsão do Tempo</h6>
+                                    <div class="dias mt-2">
+                                        <div class="dia">
+                                            <span>Ter 11 Set</span>
+                                            <i class="fa-solid fa-cloud-rain"></i>
+                                            <p>32°C / 26°C</p>
+                                        </div>
+                                        <div class="dia">
+                                            <span>Qua 12 Set</span>
+                                            <i class="fa-solid fa-cloud-rain"></i>
+                                            <p>32°C / 26°C</p>
+                                        </div>
+                                        <div class="dia">
+                                            <span>Qui 13 Set</span>
+                                            <i class="fa-solid fa-cloud-sun"></i>
+                                            <p>32°C / 26°C</p>
+                                        </div>
+                                        <div class="dia">
+                                            <span>Sex 14 Set</span>
+                                            <i class="fa-solid fa-cloud"></i>
+                                            <p>32°C / 26°C</p>
+                                        </div>
+                                        <div class="dia">
+                                            <span>Sáb 15 Set</span>
+                                            <i class="fa-solid fa-sun"></i>
+                                            <p>32°C / 26°C</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/js/bootstrap5-toggle.ecmas.min.js"></script>
+    <script src="https://unpkg.com/mqtt@5.14.0/dist/mqtt.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load('current', { packages: ['corechart', 'bar'] });
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            drawAreaChart();
+            drawColumnChart();
+        }
+
+        // grafico 1
+        function drawAreaChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Sales', 'Expenses'],
+                ['2013', 1000, 400],
+                ['2014', 1170, 460],
+                ['2015', 660, 1120],
+                ['2016', 1030, 540]
+            ]);
+
+            var options = {
+                title: 'Company Performance',
+                titleTextStyle: {
+                    fontSize: 18,
+                    bold: true
+                },
+                hAxis: {
+                    title: 'Year',
+                    titleTextStyle: { color: '#333' }
+                },
+                vAxis: {
+                    minValue: 0,
+                    title: 'Amount'
+                },
+                backgroundColor: '#f8f9fa',
+                colors: ['#28a745', '#dc3545'],
+                legend: { position: 'top', maxLines: 3 },
+                chartArea: {
+                    left: 60,
+                    top: 60,
+                    width: '80%',
+                    height: '70%'
+                }
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_area_div'));
+            chart.draw(data, options);
+        }
+
+        // grafico 2
+        function drawColumnChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('timeofday', 'Time of Day');
+            data.addColumn('number', 'Motivation Level');
+
+            data.addRows([
+                [{ v: [8, 0, 0], f: '8 am' }, 1],
+                [{ v: [9, 0, 0], f: '9 am' }, 2],
+                [{ v: [10, 0, 0], f: '10 am' }, 3],
+                [{ v: [11, 0, 0], f: '11 am' }, 4],
+                [{ v: [12, 0, 0], f: '12 pm' }, 5],
+                [{ v: [13, 0, 0], f: '1 pm' }, 6],
+                [{ v: [14, 0, 0], f: '2 pm' }, 7],
+                [{ v: [15, 0, 0], f: '3 pm' }, 8],
+                [{ v: [16, 0, 0], f: '4 pm' }, 9],
+                [{ v: [17, 0, 0], f: '5 pm' }, 10],
+            ]);
+
+            var options = {
+                title: 'Motivation Level Throughout the Day',
+                titleTextStyle: {
+                    fontSize: 18,
+                    bold: true
+                },
+                hAxis: {
+                    title: 'Time of Day',
+                    format: 'h:mm a',
+                    viewWindow: {
+                        min: [7, 30, 0],
+                        max: [17, 30, 0]
+                    }
+                },
+                vAxis: {
+                    title: 'Rating (scale of 1-10)',
+                    minValue: 0,
+                    maxValue: 10
+                },
+                backgroundColor: '#f8f9fa',
+                colors: ['#007bff'],
+                legend: { position: 'none' },
+                chartArea: {
+                    left: 60,
+                    top: 60,
+                    width: '80%',
+                    height: '70%'
+                }
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+        //grafico 3
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Effort', 'Amount given'],
+                ['My all', 100],
+            ]);
+
+            var options = {
+                pieHole: 0.5,
+                pieSliceTextStyle: {
+                    color: 'black',
+                },
+                legend: 'none'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+            chart.draw(data, options);
+        }
+
+        // // Scripts de debug e redimensionamento
+        // window.addEventListener('load', function () {
+        //     console.log('Página carregada');
+        //     console.log('Div chart_area_div:', document.getElementById('chart_area_div'));
+        //     console.log('Div chart_div:', document.getElementById('chart_div'));
+
+        //     if (typeof google !== 'undefined' && google.charts) {
+        //         console.log('Google Charts carregado com sucesso');
+        //     } else {
+        //         console.error('Google Charts não foi carregado');
+        //     }
+        // });
+
+        // window.addEventListener('resize', function () {
+        //     if (typeof drawCharts === 'function') {
+        //         drawCharts();
+        //     }
+        // });
+    </script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/sidebars.js"></script>
+
+</body>
+
+</html>
