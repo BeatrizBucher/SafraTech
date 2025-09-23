@@ -4,3 +4,5 @@ const router = express.Router()
 
 router.get('listaHistoricoCompleto', controller.listaHitoricoCompleto)
 router.get('listaHistorico/:id', controller.listaHitorico)
+
+module.exports = router;
