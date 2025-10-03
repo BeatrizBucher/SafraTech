@@ -12,19 +12,19 @@ const HistoricosModel = {
 }
 const AreasModel = {
     CadastrarAreas: async (areas) => {
-        const {nome,latitude, longitude} = areas;
-        return await executeQuery('INSERT INTO dispositivos (nome, tipo, area_id) VALUES (?,?,?)', [nome, tipo, area_id])
-        .catch(erro => { throw erro })
+        const { nome, latitude, longitude } = areas;
+        return await executeQuery('INSERT INTO areas (nome, latitude, longitude) VALUES (?,?,?)', [nome, latitude, longitude])
+            .catch(erro => { throw erro })
     }
 }
 const DispositivosModel = {
     CadastrarDispositivos: async (dispositivos) => {
-        const {nome, tipo, area_id} = dispositivos;
+        const { nome, tipo, area_id } = dispositivos;
         return await executeQuery('INSERT INTO dispositivos (nome, tipo, area_id) VALUES (?,?,?)', [nome, tipo, area_id])
-        .catch(erro => { throw erro })
+            .catch(erro => { throw erro })
     }
 }
-//O dispositivo id provavelmente vira do dispositivo
+//O dispositivo id provavelmente vira do dispositivo em si
 const EventosModel = {
     CadastrarEventos: async (eventos) => {
         const { informacao, horario, dispositivo_id } = eventos;
@@ -34,8 +34,8 @@ const EventosModel = {
 }
 const InfoMeteorologicasModel = {
     CadastrarInfoMetereologicas: async (infoMeteorologica) => {
-        const { temperatura,umidade,condicao,velocidade_vento,sensacao,maxima,minima,indice_uv,horario,precipitacao } = infoMeteorologica;
-        return await executeQuery('INSERT INTO informacoes_meteorologicas (	temperatura,umidade,condicao,velocidade_vento,sensacao,maxima,minima,indice_uv,horario,precipitacao ) VALUES (?,?,?,?,?,?,?,?,?,?)', [temperatura,umidade,condicao,velocidade_vento,sensacao,maxima,minima,indice_uv,horario,precipitacao])
+        const { temperatura, umidade, condicao, velocidade_vento, sensacao, maxima, minima, indice_uv, horario, precipitacao } = infoMeteorologica;
+        return await executeQuery('INSERT INTO informacoes_meteorologicas (	temperatura,umidade,condicao,velocidade_vento,sensacao,maxima,minima,indice_uv,horario,precipitacao ) VALUES (?,?,?,?,?,?,?,?,?,?)', [temperatura, umidade, condicao, velocidade_vento, sensacao, maxima, minima, indice_uv, horario, precipitacao])
             .catch(erro => { throw erro })
     },
     ListarInfoMetereologicasCompleta: async () => {
@@ -48,4 +48,4 @@ const InfoMeteorologicasModel = {
     }
 }
 
-module.exports = { HistoricosModel, DispositivosModel, EventosModel, InfoMeteorologicasModel }
+module.exports = { HistoricosModel, AreasModel, DispositivosModel, EventosModel, InfoMeteorologicasModel }
