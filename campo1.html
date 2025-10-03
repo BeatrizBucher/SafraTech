@@ -32,10 +32,11 @@
   </button>
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+      
     </div>
   </div>
 </header>
+
 <div class="container-fluid">
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
@@ -74,37 +75,37 @@
         </ul>
       </div>
     </nav>
-  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    
+  <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
 
       <div class="row mt-3">
-
         <!-- Controles de Irrigação -->
         <div class="col-md-3 caixa-controle p-3">
           <h6>Controles</h6>
           <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Irrigação 1</span>
-            <input type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
+            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Convencional</span>
+            <input id="btn_Convencional" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
           </div>
           <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Irrigação 2</span>
-            <input type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
+            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Pivô Central</span>
+            <input id="btn_PivoCentral" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
           </div>
           <div class="mb-2">
-            <span><i class="fa-solid fa-pump-soap me-2 icon-caixa-controle"></i>Bomba D’água</span>
-            <input type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
+            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Autopropelido</span>
+            <input id="btn_Autopropelido" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
           </div>
           <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Irrigação 3</span>
-            <input type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
+            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Lateral Móvel</span>
+            <input id="btn_LateralMovel" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
           </div>
           <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Irrigação 4</span>
-            <input type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
+            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Gotejamento</span>
+            <input id="btn_Gotejamento" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
           </div>
           <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Irrigação 5</span>
-            <input type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
+            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Microaspersão</span>
+            <input id="btn_Microaspersao" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
           </div>
 
           <!-- Alertas -->
@@ -185,10 +186,10 @@
           </div>
 
           <!-- Histórico -->
-          <div class="row mt-4">
-            <div class="col-12 caixa-historico p-3">
+          <div class="row mt-5">
+            <div class="col-12 caixa-historico p-3 mt-2 mb-4">
               <h6>Histórico</h6>
-              <table class="table table-bordered mt-2">
+              <table class="table table-bordered mt-2 ">
                 <thead>
                   <tr>
                     <th>Data</th>
@@ -216,19 +217,448 @@
                 </tbody>
               </table>
             </div>
-          </div>
+          </div >
 
         </div>
 
       </div>
   </div>
-</main>
+</div>
 </div>
 </div>
 <footer>
+  <script src="js/bootstrap-5.3.7/bootstrap.bundle.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/dashboard.js" ></script>
     <script src="/js/sidebars.js" ></script>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+      //Convencional
+      const btn_Convencional = document.getElementById('btn_Convencional');
+     
+      //Pivo Central
+      const btn_PivoCentral = document.getElementById('btn_PivoCentral');
+
+      //Autopropelido
+      const btn_Autopropelido = document.getElementById('btn_Autopropelido');
+
+      //Lateral Movel
+      const btn_LateralMovel = document.getElementById('btn_LateralMovel');
+
+      //Gotejamento 
+      const btn_Gotejamento = document.getElementById('btn_Gotejamento');
+
+      //Microaspersao
+      const btn_Microaspersao = document.getElementById('btn_Microaspersao');
+
+
+      //sensorTemperatura
+      const sensorTemp = document.getElementById('sensor_temperatura');
+
+      //sensorUmidade
+      const sensorUmid = document.getElementById('sensor_umidade');
+
+      //luminosidade
+      const sensorLumi = document.getElementById('sensor_luminosidade');
+
+      //Nivel Agua
+      const sensorNivelagua = document.getElementById('sensor_nivel_agua');
+
+      //Nivel Bateria
+      const sensorNivelbateria = document.getElementById('sensor_nivel_bateria');
+
+      //sensor eficiencia
+      const sensoreficiencia = document.getElementById('sensor_eficiencia');
+
+      const broker = 'wss://broker.hivemq.com:8884/mqtt';
+      const cliente = mqtt.connect(broker);
+
+      // topicos
+      const convencional  = 'safratech/convencional/irrigacao/campo1';
+      const pivo_central = 'safratech/pivocentral/irrigacao/campo1';
+      const autopropelido  = 'safratech/autopropelido/irrigacao/campo1';
+      const lateral_movel = 'safratech/lateralmovel/irrigacao/campo1';
+      const gotejamento  = 'safratech/gotejamento/irrigacao/campo1';
+      const microaspersao = 'safratech/microaspersao/irrigacao/campo1';
+
+      // sensores
+      const sensorTemperatura = '';
+      const sensorUmidade = '';
+      const sensorLuminosidade = '';
+      const sensorNivelAgua = '';
+      const sensorNivelBateria = '';
+      const sensorEficiencia = '';
+
+      // flags de situação dos botões
+      let status_btn_convencional = false;
+      let status_btn_pivocentral = false;
+      let status_btn_autopropelido = false;
+      let status_btn_lateralmovel = false;
+      let status_btn_gotejamento = false;
+      let status_btn_microaspersao = false;
+
+      // Acessando/Function para a função conectar.
+      // Conecta ao Broker e inscreve nos tópicos.
+      cliente.on('connect', () => {
+          console.log('Conectado ao BROKER.')
+          iconStatus.className = 'fa-solid fa-power-off fs-5 text-success';
+
+          cliente.subscribe((convencional), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((pivo_central), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((autopropelido), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((lateral_movel), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((gotejamento), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((microaspersao), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+
+          cliente.subscribe((sensorTemperatura), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((sensorUmidade), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((sensorLuminosidade), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((sensorNivelAgua), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((sensorNivelAgua), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((sensorNivelBateria), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+          cliente.subscribe((sensorEficiencia), (err) => {
+              if (!err) {
+                  console.log('conectado no topico');
+              }
+
+          });
+
+      });
+
+      // Verefique se existe mensagem no tópico inscrito.
+      cliente.on('message', (topicos, message) => {
+          const mensagem = message.toString();
+
+          //convencional
+          if (topicos === convencional) {
+              const estadoAtual = btn_Convencional.checked;
+              if (mensagem === 'off') {
+                  const estado = false;
+                  if (estado !== estadoAtual) {
+                      status_btn_convencional = true; // trava
+                      btn_Convencional.bootstrapToggle(mensagem);
+                      status_btn_convencional = false; //libera
+                  }
+              }
+
+              if (mensagem === 'on') {
+                  const estado = true;
+                  if(estado !== estadoAtual){
+                      status_btn_convencional = true; // trava
+                      btn_Convencional.bootstrapToggle(mensagem);
+                      status_btn_convencional = false; // libera
+                  }
+              }
+          }
+
+          //pivo central
+          if (topicos === pivo_central) {
+              const estadoAtual = btn_PivoCentral.checked;
+              if (mensagem === 'off') {
+                  const estado = false;
+                  if (estado !== estadoAtual) {
+                      status_btn_pivocentral = true; // trava
+                      btn_PivoCentral.bootstrapToggle(mensagem);
+                      status_btn_pivocentral = false; //libera
+                  }
+              }
+
+              if (mensagem === 'on') {
+                  const estado = true;
+                  if(estado !== estadoAtual){
+                      status_btn_pivocentral = true; // trava
+                      btn_PivoCentral.bootstrapToggle(mensagem);
+                      status_btn_pivocentral = false; // libera
+                  }
+              }
+          }
+
+          //autopropelido
+          if (topicos === autopropelido) {
+              const estadoAtual = btn_Autopropelido.checked;
+              if (mensagem === 'off') {
+                  const estado = false;
+                  if (estado !== estadoAtual) {
+                      status_btn_autopropelido = true; // trava
+                      btn_Autopropelido.bootstrapToggle(mensagem);
+                      status_btn_autopropelido = false; //libera
+                  }
+              }
+
+              if (mensagem === 'on') {
+                  const estado = true;
+                  if(estado !== estadoAtual){
+                      status_btn_autopropelido = true; // trava
+                      btn_Autopropelido.bootstrapToggle(mensagem);
+                      status_btn_autopropelido = false; // libera
+                  }
+              }
+          }
+
+          //lateral movel
+          if (topicos === lateral_movel) {
+              const estadoAtual = btn_LateralMovel.checked;
+              if (mensagem === 'off') {
+                  const estado = false;
+                  if (estado !== estadoAtual) {
+                      status_btn_lateralmovel= true; // trava
+                      btn_LateralMovel.bootstrapToggle(mensagem);
+                      status_btn_lateralmovel = false; //libera
+                  }
+              }
+
+              if (mensagem === 'on') {
+                  const estado = true;
+                  if(estado !== estadoAtual){
+                      status_btn_lateralmovel = true; // trava
+                      btn_LateralMovel.bootstrapToggle(mensagem);
+                      status_btn_lateralmovel = false; // libera
+                  }
+              }
+          }
+
+          //gotejamento
+          if (topicos === gotejamento) {
+              const estadoAtual = btn_Gotejamento.checked;
+              if (mensagem === 'off') {
+                  const estado = false;
+                  if (estado !== estadoAtual) {
+                      status_btn_gotejamento = true; // trava
+                      btn_Gotejamento.bootstrapToggle(mensagem);
+                      status_btn_gotejamento = false; //libera
+                  }
+              }
+
+              if (mensagem === 'on') {
+                  const estado = true;
+                  if(estado !== estadoAtual){
+                      status_btn_gotejamento = true; // trava
+                      btn_Gotejamento.bootstrapToggle(mensagem);
+                      status_btn_gotejamento = false; // libera
+                  }
+              }
+          }
+
+          //microaspersao
+          if (topicos === microaspersao) {
+              const estadoAtual = btn_Microaspersao.checked;
+              if (mensagem === 'off') {
+                  const estado = false;
+                  if (estado !== estadoAtual) {
+                      status_btn_microaspersao = true; // trava
+                      btn_Microaspersao.bootstrapToggle(mensagem);
+                      status_btn_microaspersao = false; //libera
+                  }
+              }
+
+              if (mensagem === 'on') {
+                  const estado = true;
+                  if(estado !== estadoAtual){
+                      status_btn_microaspersao = true; // trava
+                      btn_Microaspersao.bootstrapToggle(mensagem);
+                      status_btn_microaspersao = false; // libera
+                  }
+              }
+          }
+
+
+          //temperatura
+          if (topicos === sensorTemperatura) {
+              sensorTemp.innerText = `${message}°C`;
+          }
+
+          //sensor umidade
+          if (topicos === sensorUmidade) {
+              sensorUmid.innerText = `${message}%`;
+          };
+
+          //luminosidade
+          if (topicos === sensorLuminosidade) {
+              const sensorLuminosidade = mensagem
+              let conversao = (sensorLuminosidade / 1023) * 100
+              sensorLumi.innerText = `${conversao.toFixed(2)}%`
+          }
+
+          //nivel agua
+          if (topicos === sensorNivelAgua) {
+              sensorNivelagua.innerText = `${message}%`;
+          }
+
+          //nivel bateria
+          if (topicos === sensorNivelBateria) {
+              sensorNivelbateria.innerText = `${message}%`;
+          }
+
+          //sensor eficiencia
+          if (topicos === sensorEficiencia) {
+              sensoreficiencia.innerText = `${message}%`;
+          }
+
+      });
+
+//1
+      btn_Convencional.bootstrapToggle();
+      btn_Convencional.onchange = () => {
+          if (status_btn_convencional) return; 
+          btn_Convencional.checked ? post_Convencional('ligado') : post_Convencional('desligado');
+      }
+
+      function post_Convencional(estado) {
+          if (estado === 'desligado') {
+              cliente.publish(convencional, 'off')
+          }
+          else {
+              cliente.publish(convencional, 'on')
+          }
+      }
+//2
+      btn_PivoCentral.bootstrapToggle();
+      btn_PivoCentral.onchange = () => {
+          if (status_btn_pivocentral) return; 
+          btn_PivoCentral.checked ? post_PivoCentral('ligado') : post_PivoCentral('desligado');
+      }
+      function post_PivoCentral(estado) {
+          if (estado === 'desligado') {
+              cliente.publish(pivo_central, 'off')
+          }
+          else {
+              cliente.publish(pivo_central, 'on')
+          }
+      }
+//3
+      btn_Autopropelido.bootstrapToggle();
+      btn_Autopropelido.onchange = () => {
+          if (status_btn_autopropelido) return; 
+          btn_Autopropelido.checked ? post_Autopropelido('ligado') : post_Autopropelido('desligado');
+      }
+      function post_Autopropelido(estado) {
+          if (estado === 'desligado') {
+              cliente.publish(autopropelido, 'off')
+          }
+          else {
+              cliente.publish(autopropelido, 'on')
+          }
+      }
+//4
+      btn_LateralMovel.bootstrapToggle();
+      btn_LateralMovel.onchange = () => {
+          if (status_btn_lateralmovel) return; 
+          btn_LateralMovel.checked ? post_LateralMovel('ligado') : post_LateralMovel('desligado');
+      }
+      function post_LateralMovel(estado) {
+          if (estado === 'desligado') {
+              cliente.publish(lateral_movel, 'off')
+          }
+          else {
+              cliente.publish(lateral_movel, 'on')
+          }
+      }
+//5
+      btn_Gotejamento.bootstrapToggle();
+      btn_Gotejamento.onchange = () => {
+          if (status_btn_gotejamento) return; 
+          btn_Gotejamento.checked ? post_Gotejamento('ligado') : post_Gotejamento('desligado');
+      }
+      function post_Gotejamento(estado) {
+          if (estado === 'desligado') {
+              cliente.publish(jardim, 'off')
+          }
+          else {
+              cliente.publish(jardim, 'on')
+          }
+      }
+//6
+      btn_Microaspersao.bootstrapToggle();
+      btn_Microaspersao.onchange = () => {
+          if (status_btn_microaspersao) return; 
+          btn_Microaspersao.checked ? post_Microaspersao('ligado') : post_Microaspersao('desligado');
+      }
+      function post_Microaspersao(estado) {
+          if (estado === 'desligado') {
+              cliente.publish(microaspersao, 'off')
+          }
+          else {
+              cliente.publish(microaspersao, 'on')
+          }
+      }
+
+  });
+</script>
+
 </body>
 </html>
