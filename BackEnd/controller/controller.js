@@ -34,7 +34,7 @@ const HistoricosController = {
             res.status(500).json({ mensagem: error.message });
         }
     }
-}
+};
 
 const EventosController = {
     cadastrarEventos: async (req, res) => {
@@ -49,8 +49,6 @@ const EventosController = {
                 informacao,
                 dispositivo_id
             });
-
-            console.log(novoEvento);
 
             if (novoEvento.affectedRows > 0) {
                 return res.status(201).json({
@@ -69,9 +67,64 @@ const EventosController = {
             });
         }
     },
+};
+
+const InfoMeteorologicasController = {
+    cadastrarInfoMeteorologicas: async (req, res) => {
+        const { temperatura, umidade, condicao, velocidade_vento, sensacao, maxima, minima, indice_uv, precipitacao } = req.body;
+
+          try {
+            if (!temperatura || !umidade|| !condicao || !velocidade_vento || !sensacao || !maxima || !minima || !indice_uv || !precipitacao) {
+                return res.status(400).json({ mensagem: "Todos os campos são obrigatórios" });
+            }
+
+            const novaInfoM = await Models.InfoMeteorologicasModel.CadastrarInfoMetereologicas({
+                temperatura, 
+                umidade, 
+                condicao, 
+                velocidade_vento, 
+                sensacao, 
+                maxima, 
+                minima, 
+                indice_uv, 
+                precipitacao
+            });
+
+            if (novaInfoM.affectedRows > 0) {
+                return res.status(201).json({
+                    success: true,
+                    data: novaInfoM
+                });
+            }
+            else {
+                res.status(401).json({ msg: "Falha ao cadastrar uma nova informação meterologica" })
+            }
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({
+                success: false,
+                mensagem: error.message
+            });
+        }
+    },
+
+    listarInformacoesMeteorologicas: async (req, res) => {
+          try {
+            const listInfoM = await Models.InfoMeteorologicasModel.ListarInfoMetereologicasCompleta();
+
+            console.log(listInfoM);
+
+            return res.status(200).json(listInfoM);
+
+        }
+        catch (error) {
+            res.status(500).json({ mensagem: error.message });
+        }
+    }
 }
 
 module.exports = {
     HistoricosController,
-    EventosController
+    EventosController,
+    InfoMeteorologicasController
 }
