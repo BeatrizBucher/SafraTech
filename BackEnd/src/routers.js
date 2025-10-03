@@ -2,7 +2,10 @@ const express = require('express')
 const controller = require('../controller/controller')
 const router = express.Router()
 
-router.get('listaHistoricoCompleto', controller.listaHitoricoCompleto);
-router.get('listaHistorico/:id', controller.listaHitorico);
-router.post('cadastrarEventos', controller.cadastrarEventos);
+//Historicos
+router.get('listaHistoricoCompleto', controller.HistoricosController.listaHitoricoCompleto);
+router.get('listaHistorico/:id', controller.HistoricosController.listaHitorico);
+//Eventos
+router.post('cadastrarEventos', controller.EventosController.cadastrarEventos);
+
 module.exports = router;

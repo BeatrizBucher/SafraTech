@@ -22,7 +22,7 @@ const HistoricosController = {
                 return res.status(400).json({ mensagem: 'ID inválido' });
             }
 
-            const listaHistID = await HistoricosModel.listaHitorico(id);
+            const listaHistID = await Models.HistoricosModel.listaHitorico(id);
 
             if (!listaHistID) {
                 return res.status(404).json({ mensagem: 'Histórico não encontrado' });
@@ -45,7 +45,7 @@ const EventosController = {
                 return res.status(400).json({ mensagem: "O campo da informação é obrigatório" });
             }
 
-            const novoEvento = await Models.EventosModel.Eventos({
+            const novoEvento = await Models.EventosModel.CadastrarEventos({
                 informacao,
                 dispositivo_id
             });
