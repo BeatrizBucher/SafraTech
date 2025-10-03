@@ -1,36 +1,42 @@
 body {
-    background-color: #156a19;
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
-h5,h6 {
+h5,
+h6 {
     font-weight: bold;
 }
 
-p,span {
+p,
+span {
     margin: 0;
 }
 
 .caixa-controle {
-    background-color: #cfcfcf;
+    background-color: #6b9648c9;
     border-radius: 15px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     height: 550px;
+
 }
 
 .icon-caixa-controle {
+    justify-content: center;
+    align-items: center;
     background-color: #66666632;
+    color: #6B9648;
     font-size: 15px;
     border-radius: 15px;
     height: 20px;
     width: 20px;
-    
+
 }
 
 .caixa-controle h6 {
     margin-bottom: 15px;
     font-size: 18px;
     font-weight: bold;
+    color: white;
 }
 
 .caixa-controle div {
@@ -42,6 +48,7 @@ p,span {
     margin-bottom: 8px;
     border-radius: 8px;
 }
+
 
 .img-banner {
     border-radius: 15px;
@@ -60,7 +67,7 @@ p,span {
 
 
 .painel-principal {
-    background-color: #CFCFCF;
+    background-color: #6b9648c9;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     padding: 20px;
@@ -111,6 +118,7 @@ p,span {
 
 .caixa-previsao h6 {
     font-weight: bold;
+    color: white;
     margin-bottom: 10px;
 }
 
@@ -120,30 +128,41 @@ p,span {
     align-items: center;
     margin-bottom: 12px;
     font-size: 14px;
-    color: #444;
+    color: #fff;
 }
 
 .caixa-previsao .dia i {
     font-size: 20px;
     margin: 5px 0;
-    color: #f39c12;
+    color: #f7c615;
 }
 
 .caixa-historico {
-    background-color: #fafafab0;
+    background-color: #6b9648c9;
     border-radius: 12px;
     border: 1px solid #eee;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
+.caixa-historico h6{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .caixa-historico table {
     font-size: 14px;
+    color: white;
+
 }
 
 .caixa-historico th {
     background: #f0f2f0;
     font-weight: bold;
+    color: white;
+
 }
+
 /*barbosa*/
 .caixa-controleBB {
     background-color: #E6E6E6;
@@ -165,9 +184,9 @@ p,span {
     font-weight: bold;
     margin-bottom: 150px;
 }
+
 .container-principalBB {
     background-color: #E6E6E6;
     border-radius: 15px;
     min-height: 400px;
 }
-
