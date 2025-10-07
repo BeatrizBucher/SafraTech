@@ -24,221 +24,235 @@
   <!-- Arquivo css menu drop -->
   <link rel="stylesheet" href="./css/sidebars.css">
 </head>
+
 <body>
   <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">SafraTech</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">SafraTech</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+
+      </div>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+        <div class="position-sticky pt-3 sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                aria-current="page" href="index.html">
+                <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-house m-1"></i>
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                aria-current="page" href="campo1.html">
+                <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-newspaper m-1"></i>
+                Campo 1
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                aria-current="page" href="campo2.html">
+                <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-newspaper m-1"></i>
+                Campo 2
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                aria-current="page" href="campo3.html">
+                <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-newspaper m-1"></i>
+                Campo 3
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                aria-current="page" href="">
+                <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-gear m-1"></i>
+                Suporte
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
+
+          <div class="row mt-3">
+
+            <!-- Controles de Irrigação -->
+            <div class="col-md-3 caixa-controle p-3">
+              <h6>Controles</h6>
+              <div class="mb-2">
+                <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Convencional</span>
+                <input id="btn_Convencional" type="checkbox" checked data-toggle="toggle" data-size="sm"
+                  data-onstyle="success">
+              </div>
+              <div class="mb-2">
+                <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Pivô Central</span>
+                <input id="btn_PivoCentral" type="checkbox" checked data-toggle="toggle" data-size="sm"
+                  data-onstyle="success">
+              </div>
+              <div class="mb-2">
+                <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Autopropelido</span>
+                <input id="btn_Autopropelido" type="checkbox" checked data-toggle="toggle" data-size="sm"
+                  data-onstyle="success">
+              </div>
+              <div class="mb-2">
+                <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Lateral Móvel</span>
+                <input id="btn_LateralMovel" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
+              </div>
+              <div class="mb-2">
+                <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Gotejamento</span>
+                <input id="btn_Gotejamento" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
+              </div>
+              <div class="mb-2">
+                <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Microaspersão</span>
+                <input id="btn_Microaspersao" type="checkbox" data-toggle="toggle" data-size="sm"
+                  data-onstyle="success">
+              </div>
+
+              <!-- Alertas -->
+              <div class="alerta mt-4 text-center p-3">
+                <i class="fa-solid fa-triangle-exclamation fa-2x text-success"></i>
+                <p class="mt-2">Sem alertas no momento</p>
+              </div>
+            </div>
+
+            <!-- Painel Sensores -->
+            <div class="col-md-8 painel-principal">
+              <div class="row">
+
+                <!-- Sensores -->
+                <div class="col-md-8 d-flex flex-wrap">
+
+                  <img src="img/safra1.jpg" class="img-banner" alt="" srcset="">
+
+                  <div class="caixa-sensor m-2 p-3 text-center">
+                    <i class="fa-solid fa-temperature-three-quarters fa-2x text-danger"></i>
+                    <p>Temperatura</p>
+                    <span>Carregando...</span>
+                  </div>
+                  <div class="caixa-sensor m-2 p-3 text-center">
+                    <i class="fa-solid fa-sun fa-2x text-warning"></i>
+                    <p>Luminosidade</p>
+                    <span>Carregando...</span>
+                  </div>
+                  <div class="caixa-sensor m-2 p-3 text-center">
+                    <i class="fa-solid fa-seedling fa-2x text-success"></i>
+                    <p>Umidade do Solo</p>
+                    <span>Carregando...</span>
+                  </div>
+                  <div class="caixa-sensor m-2 p-3 text-center">
+                    <i class="fa-solid fa-droplet fa-2x text-primary"></i>
+                    <p>Umidade do Ar</p>
+                    <span>Carregando...</span>
+                  </div>
+                  <div class="caixa-sensor m-2 p-3 text-center">
+                    <i class="fa-solid fa-tint fa-2x text-info"></i>
+                    <p>Caixa D’água</p>
+                    <span>Carregando...</span>
+                  </div>
+                </div>
+
+                <!-- Previsão do Tempo -->
+                <div class="col-md-3 caixa-previsao p-3">
+                  <h6>Previsão do Tempo</h6>
+                  <div class="dias mt-2">
+                    <div class="dia">
+                      <span>Ter 11 Set</span>
+                      <i class="fa-solid fa-cloud-rain"></i>
+                      <p>32°C / 26°C</p>
+                    </div>
+                    <div class="dia">
+                      <span>Qua 12 Set</span>
+                      <i class="fa-solid fa-cloud-rain"></i>
+                      <p>32°C / 26°C</p>
+                    </div>
+                    <div class="dia">
+                      <span>Qui 13 Set</span>
+                      <i class="fa-solid fa-cloud-sun"></i>
+                      <p>32°C / 26°C</p>
+                    </div>
+                    <div class="dia">
+                      <span>Sex 14 Set</span>
+                      <i class="fa-solid fa-cloud"></i>
+                      <p>32°C / 26°C</p>
+                    </div>
+                    <div class="dia">
+                      <span>Sáb 15 Set</span>
+                      <i class="fa-solid fa-sun"></i>
+                      <p>32°C / 26°C</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Histórico -->
+              <div class="row mt-5">
+                <div class="col-12 caixa-historico p-3 mt-2 mb-4">
+                  <h6>Histórico</h6>
+                  <table class="table table-bordered mt-2 ">
+                    <thead>
+                      <tr>
+                        <th>Data</th>
+                        <th>Temperatura</th>
+                        <th>Umidade Solo</th>
+                        <th>Umidade Ar</th>
+                        <th>Caixa D’água</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>10/09</td>
+                        <td>28°C</td>
+                        <td>55%</td>
+                        <td>70%</td>
+                        <td>58%</td>
+                      </tr>
+                      <tr>
+                        <td>09/09</td>
+                        <td>29°C</td>
+                        <td>53%</td>
+                        <td>68%</td>
+                        <td>60%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</header>
+  <footer>
 
-<div class="container-fluid">
-  <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-      <div class="position-sticky pt-3 sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6" aria-current="page" href="index.html">
-              <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-house m-1"></i>
-              Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6" aria-current="page" href="campo1.html">
-              <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-newspaper m-1"></i>
-              Campo 1
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6" aria-current="page" href="campo2.html">
-              <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-newspaper m-1"></i>
-              Campo 2
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6" aria-current="page" href="campo3.html">
-              <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-newspaper m-1"></i>
-              Campo 3
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6" aria-current="page" href="">
-              <span data-feather="home" class="align-text-bottom"></span><i class="fa-solid fa-gear m-1"></i>
-              Suporte
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    
-  <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
-
-      <div class="row mt-3">
-        <!-- Controles de Irrigação -->
-        <div class="col-md-3 caixa-controle p-3">
-          <h6>Controles</h6>
-          <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Convencional</span>
-            <input id="btn_Convencional" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
-          </div>
-          <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Pivô Central</span>
-            <input id="btn_PivoCentral" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
-          </div>
-          <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Autopropelido</span>
-            <input id="btn_Autopropelido" type="checkbox" checked data-toggle="toggle" data-size="sm" data-onstyle="success">
-          </div>
-          <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Lateral Móvel</span>
-            <input id="btn_LateralMovel" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
-          </div>
-          <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Gotejamento</span>
-            <input id="btn_Gotejamento" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
-          </div>
-          <div class="mb-2">
-            <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Microaspersão</span>
-            <input id="btn_Microaspersao" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success">
-          </div>
-
-          <!-- Alertas -->
-          <div class="alerta mt-4 text-center p-3">
-            <i class="fa-solid fa-triangle-exclamation fa-2x text-success"></i>
-            <p class="mt-2">Sem alertas no momento</p>
-          </div>
-        </div>
-
-        <!-- Painel Sensores -->
-        <div class="col-md-8 painel-principal">
-          <div class="row">
-
-            <!-- Sensores -->
-            <div class="col-md-8 d-flex flex-wrap">
-
-              <img src="img/safra1.jpg" class="img-banner" alt="" srcset="">
-
-              <div class="caixa-sensor m-2 p-3 text-center">
-                <i class="fa-solid fa-temperature-three-quarters fa-2x text-danger"></i>
-                <p>Temperatura</p>
-                <span>Carregando...</span>
-              </div>
-              <div class="caixa-sensor m-2 p-3 text-center">
-                <i class="fa-solid fa-sun fa-2x text-warning"></i>
-                <p>Luminosidade</p>
-                <span>Carregando...</span>
-              </div>
-              <div class="caixa-sensor m-2 p-3 text-center">
-                <i class="fa-solid fa-seedling fa-2x text-success"></i>
-                <p>Umidade do Solo</p>
-                <span>Carregando...</span>
-              </div>
-              <div class="caixa-sensor m-2 p-3 text-center">
-                <i class="fa-solid fa-droplet fa-2x text-primary"></i>
-                <p>Umidade do Ar</p>
-                <span>Carregando...</span>
-              </div>
-              <div class="caixa-sensor m-2 p-3 text-center">
-                <i class="fa-solid fa-tint fa-2x text-info"></i>
-                <p>Caixa D’água</p>
-                <span>Carregando...</span>
-              </div>
-            </div>
-
-            <!-- Previsão do Tempo -->
-            <div class="col-md-3 caixa-previsao p-3">
-              <h6>Previsão do Tempo</h6>
-              <div class="dias mt-2">
-                <div class="dia">
-                  <span>Ter 11 Set</span>
-                  <i class="fa-solid fa-cloud-rain"></i>
-                  <p>32°C / 26°C</p>
-                </div>
-                <div class="dia">
-                  <span>Qua 12 Set</span>
-                  <i class="fa-solid fa-cloud-rain"></i>
-                  <p>32°C / 26°C</p>
-                </div>
-                <div class="dia">
-                  <span>Qui 13 Set</span>
-                  <i class="fa-solid fa-cloud-sun"></i>
-                  <p>32°C / 26°C</p>
-                </div>
-                <div class="dia">
-                  <span>Sex 14 Set</span>
-                  <i class="fa-solid fa-cloud"></i>
-                  <p>32°C / 26°C</p>
-                </div>
-                <div class="dia">
-                  <span>Sáb 15 Set</span>
-                  <i class="fa-solid fa-sun"></i>
-                  <p>32°C / 26°C</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Histórico -->
-          <div class="row mt-5">
-            <div class="col-12 caixa-historico p-3 mt-2 mb-4">
-              <h6>Histórico</h6>
-              <table class="table table-bordered mt-2 ">
-                <thead>
-                  <tr>
-                    <th>Data</th>
-                    <th>Temperatura</th>
-                    <th>Umidade Solo</th>
-                    <th>Umidade Ar</th>
-                    <th>Caixa D’água</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>10/09</td>
-                    <td>28°C</td>
-                    <td>55%</td>
-                    <td>70%</td>
-                    <td>58%</td>
-                  </tr>
-                  <tr>
-                    <td>09/09</td>
-                    <td>29°C</td>
-                    <td>53%</td>
-                    <td>68%</td>
-                    <td>60%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div >
-
-        </div>
-
-      </div>
-  </div>
-</div>
-</div>
-</div>
-<footer>
-  <script src="js/bootstrap-5.3.7/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap-5.3.7/bootstrap.bundle.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/dashboard.js" ></script>
-    <script src="/js/sidebars.js" ></script>
-</footer>
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/sidebars.js"></script>
+  </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
 
       //Convencional
       const btn_Convencional = document.getElementById('btn_Convencional');
-     
+
       //Pivo Central
       const btn_PivoCentral = document.getElementById('btn_PivoCentral');
 
@@ -255,42 +269,26 @@
       const btn_Microaspersao = document.getElementById('btn_Microaspersao');
 
 
-      //sensorTemperatura
-      const sensorTemp = document.getElementById('sensor_temperatura');
-
-      //sensorUmidade
-      const sensorUmid = document.getElementById('sensor_umidade');
-
-      //luminosidade
-      const sensorLumi = document.getElementById('sensor_luminosidade');
-
-      //Nivel Agua
-      const sensorNivelagua = document.getElementById('sensor_nivel_agua');
-
-      //Nivel Bateria
-      const sensorNivelbateria = document.getElementById('sensor_nivel_bateria');
-
-      //sensor eficiencia
-      const sensoreficiencia = document.getElementById('sensor_eficiencia');
-
       const broker = 'wss://broker.hivemq.com:8884/mqtt';
-      const cliente = mqtt.connect(broker);
+      const clientID = 'web_client_' + Math.random().toString(16).substr(2, 8);
+
+      const options = {
+        clientID: clientID,
+        connectTimeout: 4000,
+        keepalive: 60,
+      }
+
+      const cliente = mqtt.connect(broker, options);
 
       // topicos
-      const convencional  = 'safratech/convencional/irrigacao/campo1';
+      const convencional = 'safratech/convencional/irrigacao/campo1';
       const pivo_central = 'safratech/pivocentral/irrigacao/campo1';
-      const autopropelido  = 'safratech/autopropelido/irrigacao/campo1';
+      const autopropelido = 'safratech/autopropelido/irrigacao/campo1';
       const lateral_movel = 'safratech/lateralmovel/irrigacao/campo1';
-      const gotejamento  = 'safratech/gotejamento/irrigacao/campo1';
+      const gotejamento = 'safratech/gotejamento/irrigacao/campo1';
       const microaspersao = 'safratech/microaspersao/irrigacao/campo1';
 
       // sensores
-      const sensorTemperatura = '';
-      const sensorUmidade = '';
-      const sensorLuminosidade = '';
-      const sensorNivelAgua = '';
-      const sensorNivelBateria = '';
-      const sensorEficiencia = '';
 
       // flags de situação dos botões
       let status_btn_convencional = false;
@@ -300,11 +298,8 @@
       let status_btn_gotejamento = false;
       let status_btn_microaspersao = false;
 
-      // Acessando/Function para a função conectar.
-      // Conecta ao Broker e inscreve nos tópicos.
       cliente.on('connect', () => {
           console.log('Conectado ao BROKER.')
-          iconStatus.className = 'fa-solid fa-power-off fs-5 text-success';
 
           cliente.subscribe((convencional), (err) => {
               if (!err) {
@@ -349,54 +344,7 @@
           });
 
 
-          cliente.subscribe((sensorTemperatura), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((sensorUmidade), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((sensorLuminosidade), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((sensorNivelAgua), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((sensorNivelAgua), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((sensorNivelBateria), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((sensorEficiencia), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
+    
 
       });
 
@@ -537,37 +485,7 @@
           }
 
 
-          //temperatura
-          if (topicos === sensorTemperatura) {
-              sensorTemp.innerText = `${message}°C`;
-          }
 
-          //sensor umidade
-          if (topicos === sensorUmidade) {
-              sensorUmid.innerText = `${message}%`;
-          };
-
-          //luminosidade
-          if (topicos === sensorLuminosidade) {
-              const sensorLuminosidade = mensagem
-              let conversao = (sensorLuminosidade / 1023) * 100
-              sensorLumi.innerText = `${conversao.toFixed(2)}%`
-          }
-
-          //nivel agua
-          if (topicos === sensorNivelAgua) {
-              sensorNivelagua.innerText = `${message}%`;
-          }
-
-          //nivel bateria
-          if (topicos === sensorNivelBateria) {
-              sensorNivelbateria.innerText = `${message}%`;
-          }
-
-          //sensor eficiencia
-          if (topicos === sensorEficiencia) {
-              sensoreficiencia.innerText = `${message}%`;
-          }
 
       });
 
@@ -580,9 +498,12 @@
 
       function post_Convencional(estado) {
           if (estado === 'desligado') {
+            console.log(convencional)
               cliente.publish(convencional, 'off')
           }
           else {
+            console.log(convencional)
+
               cliente.publish(convencional, 'on')
           }
       }
@@ -636,10 +557,10 @@
       }
       function post_Gotejamento(estado) {
           if (estado === 'desligado') {
-              cliente.publish(jardim, 'off')
+              cliente.publish(gotejamento, 'off')
           }
           else {
-              cliente.publish(jardim, 'on')
+              cliente.publish(gotejamento, 'on')
           }
       }
 //6

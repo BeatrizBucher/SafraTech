@@ -3,42 +3,28 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
-h5,
-h6 {
+h5,h6 {
     font-weight: bold;
 }
 
-p,
-span {
+p,span {
     margin: 0;
 }
 
 .caixa-controle {
-    background-color: #E6E6E6;
+    background-color: #cfcfcf;
     border-radius: 15px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     height: 550px;
-    align-items: center;
-    justify-content: center;
+
 }
 
-.caixa-controle div {
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
-    margin-bottom: 8px;
-}
-.historico {
-    justify-content: center;
-    gap: 8px;
-}
 .icon-caixa-controle {
-    background-color: #66666632;
     font-size: 15px;
     border-radius: 15px;
     height: 20px;
     width: 20px;
-
+   
 }
 
 .caixa-controle h6 {
@@ -47,7 +33,15 @@ span {
     font-weight: bold;
 }
 
-
+.caixa-controle div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fafafa;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
 
 .img-banner {
     border-radius: 15px;
@@ -103,64 +97,35 @@ span {
     align-self: center;
 }
 
+.caixa-previsao {
+    background-color: #fafafa2e;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
 .caixa-previsao p {
     font-size: 15px;
     font-weight: bold;
 }
 
-.caixa-previsao h4 {
+.caixa-previsao h6 {
     font-weight: bold;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-.caixa-previsao .dia p {
-    margin: 2px 0;
-}
-.caixa-previsao .dias {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    gap: 80px;
+    margin-bottom: 10px;
 }
 
 .caixa-previsao .dia {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 0;
+    margin-bottom: 12px;
     font-size: 14px;
     color: #444;
 }
-.vermelho {
-    color: #A82929;
-    font-weight: bold;
-}
-.azul {
-    color: #4629A8;
-    font-weight: bold;
-}
-
-.contTempo {
-  background-color: #FFFFFF;
-    border-radius: 20px;
-    width: 60%;
-    height: 100%;
-    display: flex;          
-    flex-direction: column;  
-    justify-content: center;  
-    align-items: center;    
-    margin: 0 auto;
-}
-.caixa-previsao {
-    width: auto;
-    margin: 0;
-}
 
 .caixa-previsao .dia i {
-    font-size: 24px;
-    margin: 8px 0;
+    font-size: 20px;
+    margin: 5px 0;
     color: #f39c12;
 }
 
@@ -179,123 +144,4 @@ span {
     background: #f0f2f0;
     font-weight: bold;
 }
-
-/*barbosa*/
-.caixa-controleBB {
-    background-color: #E6E6E6;
-    border-radius: 15px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 4px 0 8px rgba(0, 0, 0, 0.15);
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 45px;
-    padding-top: 10px;
-    box-sizing: border-box;
-}
-
-.img-alertaBB {
-    height: 300px;
-    width: auto;
-    object-fit: contain;
-}
-
-.textinhoBB {
-    font-weight: bold;
-    text-align: center;
-    margin: 0;
-}
-.textoBB{
-    text-align: center;
-    margin: 0;
-    font-size: 17px;
-    color: #7A7A7A;
-}
-.historico i {
-    font-size: 24px;
-}
-.container-principalBB {
-    background-color: #E6E6E6;
-    padding: 20px;
-    border-radius: 20px;
-    color: #7A7A7A !important; 
-}
-
-.containerMaior1 {
-    background-color: #ffffff;
-    width: 100%;
-    height: 40%;
-    display: flex;
-    flex-direction: row;
-}
-
-.containerGRadar {
-    background-color: #ffffff;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 400px;
-    height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-
-}
-
-.containerDoughnut {
-    background-color: #ffffff;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 400px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-
-#graficoDoughnut {
-    width: 90% !important;
-    height: 90% !important;
-}
-
-.containerGLinha {
-    background-color: #ffffff;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 600px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-
-#graficoLinha {
-    width: 90% !important;
-    height: 180px !important;
-}
-
-.containerMaior2 {
-   background-color: #fcfcfc;
-    width: 100%;
-    height: 30%;
-    display: flex;
-    flex-direction: row;
-}
-
-.containerGBarra {
-    background-color: #ffffff;
-    border-radius: 20px;
-    width: 100%;
-    height: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#graficoBarra {
-    width: 90% !important;
-    height: 180px !important;
-}
+  
