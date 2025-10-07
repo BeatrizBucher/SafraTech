@@ -1,4 +1,5 @@
 body {
+    background-color: #156a19;
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
@@ -13,18 +14,26 @@ span {
 }
 
 .caixa-controle {
-    background-color: #6b9648c9;
+    background-color: #E6E6E6;
     border-radius: 15px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     height: 550px;
-
+    align-items: center;
+    justify-content: center;
 }
 
-.icon-caixa-controle {
-    justify-content: center;
+.caixa-controle div {
+    display: flex;
     align-items: center;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+.historico {
+    justify-content: center;
+    gap: 8px;
+}
+.icon-caixa-controle {
     background-color: #66666632;
-    color: #6B9648;
     font-size: 15px;
     border-radius: 15px;
     height: 20px;
@@ -36,18 +45,8 @@ span {
     margin-bottom: 15px;
     font-size: 18px;
     font-weight: bold;
-    color: white;
 }
 
-.caixa-controle div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #fafafa;
-    padding: 8px 12px;
-    margin-bottom: 8px;
-    border-radius: 8px;
-}
 
 
 .img-banner {
@@ -67,7 +66,7 @@ span {
 
 
 .painel-principal {
-    background-color: #6b9648c9;
+    background-color: #CFCFCF;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     padding: 20px;
@@ -104,63 +103,81 @@ span {
     align-self: center;
 }
 
-.caixa-previsao {
-    background-color: #fafafa2e;
-    border-radius: 12px;
-    border: 1px solid #eee;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-}
-
 .caixa-previsao p {
     font-size: 15px;
     font-weight: bold;
 }
 
-.caixa-previsao h6 {
+.caixa-previsao h4 {
     font-weight: bold;
-    color: white;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+.caixa-previsao .dia p {
+    margin: 2px 0;
+}
+.caixa-previsao .dias {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 80px;
 }
 
 .caixa-previsao .dia {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     font-size: 14px;
-    color: #fff;
+    color: #444;
+}
+.vermelho {
+    color: #A82929;
+    font-weight: bold;
+}
+.azul {
+    color: #4629A8;
+    font-weight: bold;
+}
+
+.contTempo {
+  background-color: #FFFFFF;
+    border-radius: 20px;
+    width: 60%;
+    height: 100%;
+    display: flex;          
+    flex-direction: column;  
+    justify-content: center;  
+    align-items: center;    
+    margin: 0 auto;
+}
+.caixa-previsao {
+    width: auto;
+    margin: 0;
 }
 
 .caixa-previsao .dia i {
-    font-size: 20px;
-    margin: 5px 0;
-    color: #f7c615;
+    font-size: 24px;
+    margin: 8px 0;
+    color: #f39c12;
 }
 
 .caixa-historico {
-    background-color: #6b9648c9;
+    background-color: #fafafab0;
     border-radius: 12px;
     border: 1px solid #eee;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
-.caixa-historico h6{
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-}
-
 .caixa-historico table {
     font-size: 14px;
-    color: white;
-
 }
 
 .caixa-historico th {
     background: #f0f2f0;
     font-weight: bold;
-    color: white;
-
 }
 
 /*barbosa*/
@@ -171,7 +188,11 @@ span {
     height: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     margin-bottom: 45px;
+    padding-top: 10px;
+    box-sizing: border-box;
 }
 
 .img-alertaBB {
@@ -182,44 +203,99 @@ span {
 
 .textinhoBB {
     font-weight: bold;
-    margin-bottom: 150px;
+    text-align: center;
+    margin: 0;
+}
+.textoBB{
+    text-align: center;
+    margin: 0;
+    font-size: 17px;
+    color: #7A7A7A;
+}
+.historico i {
+    font-size: 24px;
+}
+.container-principalBB {
+    background-color: #E6E6E6;
+    padding: 20px;
+    border-radius: 20px;
+    color: #7A7A7A !important; 
 }
 
-.container-principalBB {
-    background-color: #ff3d6e;
-    border-radius: 15px;
-    min-height: 400px;
-}
-.containerMaior1{
-    background-color: #d23dff;
+.containerMaior1 {
+    background-color: #ffffff;
     width: 100%;
     height: 40%;
-    display: flex; /* Adicione esta linha */
-    flex-direction: row;
-}
-.cont1{
-    background-color: #43ff14;
-    width: 50%;
-    height: 100%;
-}
-.cont2{
-    background-color: #ff1414;
-    width: 50%;
-    height: 100%;
-    flex-direction: column;
-}
-.containerMaior2{
-    background-color: #d23dff;
-    width: 100%;
-    height: 30%;
-    display: flex; /* Adicione esta linha */
-    flex-direction: row;
-}
-.containerMaior3{
-    background-color: #473dff;
-    width: 100%;
-    height: 30%;
-    display: flex; /* Adicione esta linha */
+    display: flex;
     flex-direction: row;
 }
 
+.containerGRadar {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+
+}
+
+.containerDoughnut {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#graficoDoughnut {
+    width: 90% !important;
+    height: 90% !important;
+}
+
+.containerGLinha {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 600px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#graficoLinha {
+    width: 90% !important;
+    height: 180px !important;
+}
+
+.containerMaior2 {
+   background-color: #fcfcfc;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+}
+
+.containerGBarra {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#graficoBarra {
+    width: 90% !important;
+    height: 180px !important;
+}
