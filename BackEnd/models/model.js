@@ -28,7 +28,7 @@ const HistoricosModel = {
 const EventosModel = {
     CadastrarEventos: async (eventos) => {
         const { informacao, horario, dispositivo_id } = eventos;
-        return await executeQuery('INSERT INTO eventos (informacao, horario, dispositivo_id) VALUES (?,?,?)', [informacao, horario, dispositivo_id])
+        return await executeQuery('INSERT INTO eventos (informacao, dispositivo_id) VALUES (?,?)', [informacao, dispositivo_id])
             .catch(erro => { throw erro })
     }
 }
