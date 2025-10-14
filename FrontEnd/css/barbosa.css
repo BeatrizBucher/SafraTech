@@ -117,13 +117,13 @@ span {
 
 .caixa-previsao h4 {
     font-weight: bold;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     display: inline-block;
     color: #000000;
 
 }
 .caixa-previsao .dia p {
-    margin: 2px 0;
+    /* margin: 2px 0; */
 }
 .caixa-previsao .dias {
     display: flex;
@@ -170,7 +170,7 @@ span {
 
 .caixa-previsao .dia i {
     font-size: 24px;
-    margin: 8px 0;
+    /* margin: 8px 0; */
     color: #f39c12;
 }
 
