@@ -8,8 +8,15 @@
 // Faz requisições HTTP
 # include <ESP8266HTTPClient.h>
 
+# include <OneWire.h>
+# include <DallasTemperature.h>
+# define PINO_SENSOR_TEMP D2
+
+//pegando os binarios para entregar em temperaturas
+OneWire barramento(PINO_SENSOR_TEMP);
+DallasTemperature sensor(&barramento);
 // Definição da URL da api.
-const char* cadastrarEventos = "http://192.168.185.217:3001/cadastrarEventos";
+const char* cadastrarEventos = "http://172.22.144.1:3001/cadastrarEventos";
 
 // Definição dos tópicos.
 # define topico_convencional "safratech/convencional/irrigacao/campo1"
@@ -262,6 +269,44 @@ void configPinos() {
   pinMode(D9, OUTPUT);
   pinMode(D4, OUTPUT);
   pinMode(D4, OUTPUT);
+  pinMode(A0, INPUT);
+}
+void temperatura(){
+  // pede para o sensor fazer a leitura
+  sensor.requestTemperatures();
+
+//busca o valor da temperatura em C
+  float temperaturaC = sensor.getTempCByIndex(0);
+
+  //exibindo as informações na serial
+
+  Serial.println("Temperatura");
+  Serial.println(temperaturaC);
+  Serial.println("°C");
+}
+
+void sensorUmidade(){
+  int sensorUmidade = analogRead(A0);
+  if(sensorUmidade >900){
+    digitalWrite(D13, 1);
+    digitalWrite(D12, 0);
+    digitalWrite(D11,0);
+  }
+ 
+  
+   else if(sensorUmidade <=900 && sensorUmidade >= 500 ){
+     digitalWrite(D13, 0);
+    digitalWrite(D12, 1);
+    digitalWrite(D11,0);
+  }
+  
+   else{
+       digitalWrite(D13, 0);
+    digitalWrite(D12, 0);
+    digitalWrite(D11,1);
+  }
+
+  Serial.println(sensorUmidade);
 }
 
 // Configurar o dispositivo Arduino.
@@ -272,10 +317,12 @@ void setup() {
   configMQTT();
   configPinos();
 }
-
 void loop() {
   if (!mqtt.connected()) {
     reconectar();
   }
   mqtt.loop();
+    // sensorUmidade();
+    temperatura();
+
 }
