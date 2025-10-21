@@ -1,30 +1,33 @@
 // Faz a conexão do wemos com a rede WI-FI.
-# include <ESP8266WiFi.h>
+#include <ESP8266WiFi.h>
 // Inscreve e publica nos topicos MQTT.
 // Faz a conexão com o BROKER.
-# include <PubSubClient.h>
+#include <PubSubClient.h>
 // Faz o post de objetos JSON.
-# include <ArduinoJson.h>
+#include <ArduinoJson.h>
 // Faz requisições HTTP
-# include <ESP8266HTTPClient.h>
+#include <ESP8266HTTPClient.h>
 
-# include <OneWire.h>
-# include <DallasTemperature.h>
-# define PINO_SENSOR_TEMP D2
+#include <OneWire.h>
+#include <DallasTemperature.h>
+#define PINO_SENSOR_TEMP D2
 
 //pegando os binarios para entregar em temperaturas
 OneWire barramento(PINO_SENSOR_TEMP);
 DallasTemperature sensor(&barramento);
 // Definição da URL da api.
-const char* cadastrarEventos = "http://172.22.144.1:3001/cadastrarEventos";
+const char* cadastrarEventos = "http://10.136.245.75:3001/cadastrarEventos";
+
+long int tempoAntigo = 0;
+long int contador = 0;
 
 // Definição dos tópicos.
-# define topico_convencional "safratech/convencional/irrigacao/campo1"
-# define topico_pivo_central "safratech/pivocentral/irrigacao/campo1"
-# define topico_autopropelido "safratech/autopropelido/irrigacao/campo1"
-# define topico_lateral_movel "safratech/lateralmovel/irrigacao/campo1"
-# define topico_gotejamento "safratech/gotejamento/irrigacao/campo1"
-# define topico_microaspersao "safratech/microaspersao/irrigacao/campo1"
+#define topico_convencional "safratech/convencional/irrigacao/campo1"
+#define topico_pivo_central "safratech/pivocentral/irrigacao/campo1"
+#define topico_autopropelido "safratech/autopropelido/irrigacao/campo1"
+#define topico_lateral_movel "safratech/lateralmovel/irrigacao/campo1"
+#define topico_gotejamento "safratech/gotejamento/irrigacao/campo1"
+#define topico_microaspersao "safratech/microaspersao/irrigacao/campo1"
 
 // Definição dos sensores
 // #define temperatura "maquete/ambiente/temperatura";
@@ -35,20 +38,20 @@ const char* cadastrarEventos = "http://172.22.144.1:3001/cadastrarEventos";
 // #define eficiencia "maquete/energia/eficiencia";
 
 // Definição dos acionamentos ON.
-# define liga_luz_convencional digitalWrite(D13, HIGH);
-# define liga_luz_pivo_central digitalWrite(D12, HIGH);
-# define liga_luz_autopropelido digitalWrite(D11, HIGH);
-# define liga_luz_lateral_movel digitalWrite(D10, HIGH);
-# define liga_luz_gotejamento digitalWrite(D9, HIGH);
-# define liga_luz_microaspersao digitalWrite(D4, HIGH);
+#define liga_luz_convencional digitalWrite(D13, HIGH);
+#define liga_luz_pivo_central digitalWrite(D12, HIGH);
+#define liga_luz_autopropelido digitalWrite(D11, HIGH);
+#define liga_luz_lateral_movel digitalWrite(D10, HIGH);
+#define liga_luz_gotejamento digitalWrite(D9, HIGH);
+#define liga_luz_microaspersao digitalWrite(D4, HIGH);
 
 // Definição dos acionamentos OF.
-# define desliga_luz_convencional digitalWrite(D13, LOW);
-# define desliga_luz_pivo_central digitalWrite(D12, LOW);
-# define desliga_luz_autopropelido digitalWrite(D11, LOW);
-# define desliga_luz_lateral_movel digitalWrite(D10, LOW);
-# define desliga_luz_gotejamento digitalWrite(D9, LOW);
-# define desliga_luz_microaspersao digitalWrite(D4, LOW);
+#define desliga_luz_convencional digitalWrite(D13, LOW);
+#define desliga_luz_pivo_central digitalWrite(D12, LOW);
+#define desliga_luz_autopropelido digitalWrite(D11, LOW);
+#define desliga_luz_lateral_movel digitalWrite(D10, LOW);
+#define desliga_luz_gotejamento digitalWrite(D9, LOW);
+#define desliga_luz_microaspersao digitalWrite(D4, LOW);
 
 // Cria conexões com as bibliotecas WiFiClient e PubSubClient.
 // Fazendo a instancia.
@@ -100,7 +103,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
   // Função de c++ para comparação.
   // Compara o tópico recebido com o tópico desejado.
   //CONVENCIONAL
- if (strcmp(topic, topico_convencional) == 0) {
+  if (strcmp(topic, topico_convencional) == 0) {
     if (mensagem == "on") {
       liga_luz_convencional;
       if (digitalRead(D13)) {
@@ -120,12 +123,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_pivo_central) == 0) {
     if (mensagem == "on") {
       liga_luz_pivo_central;
-      if (digitalRead(D12)){
+      if (digitalRead(D12)) {
         postDadosJson(mensagem, 2);
       }
     } else if (mensagem == "off") {
       desliga_luz_pivo_central;
-      if (!digitalRead(D12)){
+      if (!digitalRead(D12)) {
         postDadosJson(mensagem, 2);
       }
     } else {
@@ -268,45 +271,53 @@ void configPinos() {
   pinMode(D10, OUTPUT);
   pinMode(D9, OUTPUT);
   pinMode(D4, OUTPUT);
-  pinMode(D4, OUTPUT);
   pinMode(A0, INPUT);
 }
-void temperatura(){
+void timer() {
+  long int tempoAtual = millis();
+
+  if (tempoAtual - tempoAntigo > 1000) {
+
+    tempoAntigo = millis();
+    contador++;
+  }
+  return contador;
+}
+void temperatura() {
   // pede para o sensor fazer a leitura
   sensor.requestTemperatures();
 
-//busca o valor da temperatura em C
+  //busca o valor da temperatura em C
   float temperaturaC = sensor.getTempCByIndex(0);
 
   //exibindo as informações na serial
-
-  Serial.println("Temperatura");
-  Serial.println(temperaturaC);
-  Serial.println("°C");
+  if (contador == 60) {
+    contador = 0;
+    Serial.println("Temperatura: ");
+    Serial.println(temperaturaC);
+    Serial.println("°C");
+  }
 }
 
-void sensorUmidade(){
+void sensorUmidade() {
   int sensorUmidade = analogRead(A0);
-  if(sensorUmidade >900){
-    digitalWrite(D13, 1);
-    digitalWrite(D12, 0);
-    digitalWrite(D11,0);
+  if (contador == 60) {
+    contador = 0;
+    if (sensorUmidade > 900) {
+      digitalWrite(D13, 1);
+      digitalWrite(D12, 0);
+      digitalWrite(D11, 0);
+    } else if (sensorUmidade <= 900 && sensorUmidade >= 500) {
+      digitalWrite(D13, 0);
+      digitalWrite(D12, 1);
+      digitalWrite(D11, 0);
+    } else {
+      digitalWrite(D13, 0);
+      digitalWrite(D12, 0);
+      digitalWrite(D11, 1);
+    }
+    Serial.println(sensorUmidade);
   }
- 
-  
-   else if(sensorUmidade <=900 && sensorUmidade >= 500 ){
-     digitalWrite(D13, 0);
-    digitalWrite(D12, 1);
-    digitalWrite(D11,0);
-  }
-  
-   else{
-       digitalWrite(D13, 0);
-    digitalWrite(D12, 0);
-    digitalWrite(D11,1);
-  }
-
-  Serial.println(sensorUmidade);
 }
 
 // Configurar o dispositivo Arduino.
@@ -316,13 +327,12 @@ void setup() {
   configWifi();
   configMQTT();
   configPinos();
+  contador();
+  sensor.begin();
 }
 void loop() {
   if (!mqtt.connected()) {
     reconectar();
   }
   mqtt.loop();
-    // sensorUmidade();
-    temperatura();
-
 }
