@@ -93,7 +93,7 @@
             <div class="col-md-3 caixa-controle p-3">
               <h6>Controles</h6>
               <div class="mb-2">
-                <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Convencional</span>
+                <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle text-success"></i>Convencional</span>
                 <input id="btn_Convencional" type="checkbox" checked data-toggle="toggle" data-size="sm"
                   data-onstyle="success">
               </div>
@@ -123,8 +123,8 @@
 
               <!-- Alertas -->
               <div class="alerta mt-4 text-center p-3">
-                <i class="fa-solid fa-triangle-exclamation fa-2x text-success"></i>
-                <p class="mt-2">Sem alertas no momento</p>
+                <i class="fa-solid fa-triangle-exclamation fa-2x "></i>
+                <p class="mt-3">Sem alertas no momento</p>
               </div>
             </div>
 
@@ -135,19 +135,19 @@
                 <!-- Sensores -->
                 <div class="col-md-8 d-flex flex-wrap">
 
-                  <img src="img/safra1.jpg" class="img-banner" alt="" srcset="">
+                  <img src="img/safra1.jpg" class="img-banner shadow" alt="" srcset="">
 
-                  <div class="caixa-sensor m-2 p-3 text-center">
+                  <div class="caixa-sensor mt-4 m-2 p-3 text-center">
                     <i class="fa-solid fa-temperature-three-quarters fa-2x text-danger"></i>
                     <p>Temperatura</p>
                     <span>Carregando...</span>
                   </div>
-                  <div class="caixa-sensor m-2 p-3 text-center">
+                  <div class="caixa-sensor m-2  mt-4 p-3 text-center">
                     <i class="fa-solid fa-sun fa-2x text-warning"></i>
                     <p>Luminosidade</p>
                     <span>Carregando...</span>
                   </div>
-                  <div class="caixa-sensor m-2 p-3 text-center">
+                  <div class="caixa-sensor m-2 p-3 mt-4 text-center">
                     <i class="fa-solid fa-seedling fa-2x text-success"></i>
                     <p>Umidade do Solo</p>
                     <span>Carregando...</span>
@@ -162,40 +162,23 @@
                     <p>Caixa D’água</p>
                     <span>Carregando...</span>
                   </div>
-                </div>
 
-                <!-- Previsão do Tempo -->
-                <div class="col-md-3 caixa-previsao p-3">
-                  <h6>Previsão do Tempo</h6>
-                  <div class="dias mt-2">
-                    <div class="dia">
-                      <span>Ter 11 Set</span>
-                      <i class="fa-solid fa-cloud-rain"></i>
-                      <p>32°C / 26°C</p>
-                    </div>
-                    <div class="dia">
-                      <span>Qua 12 Set</span>
-                      <i class="fa-solid fa-cloud-rain"></i>
-                      <p>32°C / 26°C</p>
-                    </div>
-                    <div class="dia">
-                      <span>Qui 13 Set</span>
-                      <i class="fa-solid fa-cloud-sun"></i>
-                      <p>32°C / 26°C</p>
-                    </div>
-                    <div class="dia">
-                      <span>Sex 14 Set</span>
-                      <i class="fa-solid fa-cloud"></i>
-                      <p>32°C / 26°C</p>
-                    </div>
-                    <div class="dia">
-                      <span>Sáb 15 Set</span>
-                      <i class="fa-solid fa-sun"></i>
-                      <p>32°C / 26°C</p>
-                    </div>
+                  <div class="caixa-sensor m-2 p-3 text-center">
+                    <i class="fa-solid fa-tint fa-2x text-secondary"></i>
+                    <p>Caixa D’água</p>
+                    <span>Carregando...</span>
                   </div>
+
+                </div>
+                    <div class="col-md-3 clima shadow">
+                    <div class="cidadeCor" id="cidade"></div>
+                    <div class="corCabecalho" id="latitude">Buscando...</div>
+                    <div class="corCabecalho" id="longitude">Buscando...</div>                
                 </div>
 
+           
+
+              </div>
               </div>
 
               <!-- Histórico -->
@@ -245,6 +228,8 @@
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/dashboard.js"></script>
     <script src="/js/sidebars.js"></script>
+    <script src="js/informacaoMeteorologica.js"></script>
+
   </footer>
 
   <script>
