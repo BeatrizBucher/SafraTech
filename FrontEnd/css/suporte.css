@@ -1,0 +1,19 @@
+.msg {
+    padding: 10px;
+    border-radius: 8px;
+    margin: 6px 0;
+    max-width: 85%;
+    font-size: 15px;
+    white-space: pre-line;
+}
+
+.msg.user {
+    background: #d1ffd6;
+    align-self: flex-end;
+    font-weight: bold;
+}
+
+.msg.bot {
+    background: #e7e7e7;
+    align-self: flex-start;
+}
