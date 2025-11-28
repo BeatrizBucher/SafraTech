@@ -18,8 +18,12 @@ DallasTemperature sensor(&barramento);
 // Definição da URL da api.
 const char* cadastrarEventos = "http://10.136.245.75:3001/cadastrarEventos";
 
-long int tempoAntigo = 0;
-long int contador = 0;
+unsigned long tempo = 0;
+unsigned long auxiliar = 0;
+unsigned long int contador = 0;
+bool minuto = false;
+bool hora = false;
+
 
 // Definição dos tópicos.
 #define topico_convencional "safratech/convencional/irrigacao/campo1"
@@ -28,6 +32,8 @@ long int contador = 0;
 #define topico_lateral_movel "safratech/lateralmovel/irrigacao/campo1"
 #define topico_gotejamento "safratech/gotejamento/irrigacao/campo1"
 #define topico_microaspersao "safratech/microaspersao/irrigacao/campo1"
+#define topico_sensor_temp "safratech/sensor/topico_sensor_temp/campo1"
+#define topico_sensor_umidade "safratech/sensor/topico_sensor_umidade/campo1"
 
 // Definição dos sensores
 // #define temperatura "maquete/ambiente/temperatura";
@@ -53,6 +59,9 @@ long int contador = 0;
 #define desliga_luz_gotejamento digitalWrite(D9, LOW);
 #define desliga_luz_microaspersao digitalWrite(D4, LOW);
 
+  //Definição de porta de sensor
+  int sensorNivelDagua = analogRead(A0);
+
 // Cria conexões com as bibliotecas WiFiClient e PubSubClient.
 // Fazendo a instancia.
 WiFiClient espClient;
@@ -60,12 +69,16 @@ WiFiClient espClient;
 PubSubClient mqtt(espClient);
 
 // Enviar as mensagens para o back-end
-bool postDadosJson(const String informacao, const int id) {
+bool postDadosJson(char* informacao, const int id, unsigned int length) {
+  String mensagem = "";
+  for (int i = 0; i < length; i++) {
+    mensagem += (char)informacao[i];
+  }
 
   // montando o JSON
   StaticJsonDocument<200> doc;
 
-  doc["informacao"] = informacao;
+  doc["informacao"] = mensagem;
   doc["dispositivo_id"] = id;
 
   // transforma o objeto em JSON
@@ -90,6 +103,36 @@ bool postDadosJson(const String informacao, const int id) {
   return (code > 0 && code < 400);
 }
 
+void postDadosMqtt(char* topic, byte* payload, unsigned int length) {
+  // In order to republish this payload, a copy must be made
+  // as the orignal payload buffer will be overwritten whilst
+  // constructing the PUBLISH packet.
+
+  // Allocate the correct amount of memory for the payload copy
+  byte* p = (byte*)malloc(length);
+  // Copy the payload to the new buffer
+  memcpy(p, payload, length);
+  if (strcmp(topic, topico_sensor_umidade) == 0)
+    client.publish(topico_sensor_umidade, p, length);
+  if (strcmp(topic, topico_sensor_temp) == 0)
+    client.publish(topico_sensor_temp, p, length);
+  // Free the memory
+  free(p);
+}
+
+void postDadosSensorHora() {
+  //SENSOR TEMPERATRA
+  postDadosJson(sensorNivelDagua, 7);
+  //NÍVEL D'ÁGUA
+  postDadosJson(barramento(), 8);
+}
+void postDadosSensorMinuto() {
+  //SENSOR TEMPERATRA
+  postDadosMqtt(sensorNivelDagua, 7);
+  //NÍVEL D'ÁGUA
+  postDadosMqtt(barramento(), 8);
+}
+
 // Recebe as mensagens do tópico inscrito.
 void callback(char* topic, byte* payload, unsigned int length) {
 
@@ -106,12 +149,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_convencional) == 0) {
     if (mensagem == "on") {
       liga_luz_convencional;
-      if (digitalRead(D13)) {
+      if (digitalRead(D13) && hora == true) {
         postDadosJson(mensagem, 1);
       }
     } else if (mensagem == "off") {
       desliga_luz_convencional;
-      if (!digitalRead(D13)) {
+      if (!digitalRead(D13) && hora == true) {
         postDadosJson(mensagem, 1);
       }
     } else {
@@ -123,12 +166,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_pivo_central) == 0) {
     if (mensagem == "on") {
       liga_luz_pivo_central;
-      if (digitalRead(D12)) {
+      if (digitalRead(D12) && hora == true) {
         postDadosJson(mensagem, 2);
       }
     } else if (mensagem == "off") {
       desliga_luz_pivo_central;
-      if (!digitalRead(D12)) {
+      if (!digitalRead(D12) && hora == true) {
         postDadosJson(mensagem, 2);
       }
     } else {
@@ -140,12 +183,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_autopropelido) == 0) {
     if (mensagem == "on") {
       liga_luz_autopropelido;
-      if (digitalRead(D11)) {
+      if (digitalRead(D11) && hora == true) {
         postDadosJson(mensagem, 3);
       }
     } else if (mensagem == "off") {
       desliga_luz_autopropelido;
-      if (!digitalRead(D11)) {
+      if (!digitalRead(D11) && hora == true) {
         postDadosJson(mensagem, 3);
       }
     } else {
@@ -157,12 +200,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_lateral_movel) == 0) {
     if (mensagem == "on") {
       liga_luz_lateral_movel;
-      if (digitalRead(D10)) {
+      if (digitalRead(D10) && hora == true) {
         postDadosJson(mensagem, 4);
       }
     } else if (mensagem == "off") {
       desliga_luz_lateral_movel;
-      if (!digitalRead(D10)) {
+      if (!digitalRead(D10) && hora == true) {
         postDadosJson(mensagem, 4);
       }
     } else {
@@ -174,12 +217,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_gotejamento) == 0) {
     if (mensagem == "on") {
       liga_luz_gotejamento;
-      if (digitalRead(D9)) {
+      if (digitalRead(D9) && hora == true) {
         postDadosJson(mensagem, 5);
       }
     } else if (mensagem == "off") {
       desliga_luz_gotejamento;
-      if (!digitalRead(D9)) {
+      if (!digitalRead(D9) && hora == true) {
         postDadosJson(mensagem, 5);
       }
     } else {
@@ -191,12 +234,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_microaspersao) == 0) {
     if (mensagem == "on") {
       liga_luz_microaspersao;
-      if (digitalRead(D4)) {
+      if (digitalRead(D4) && hora == true) {
         postDadosJson(mensagem, 6);
       }
     } else if (mensagem == "off") {
       desliga_luz_microaspersao;
-      if (!digitalRead(D4)) {
+      if (!digitalRead(D4) && hora == true) {
         postDadosJson(mensagem, 6);
       }
     } else {
@@ -228,6 +271,8 @@ void reconectar() {
       mqtt.subscribe(topico_lateral_movel);
       mqtt.subscribe(topico_gotejamento);
       mqtt.subscribe(topico_microaspersao);
+      mqtt.subscribe(topico_sensor_temp);
+      mqtt.subscribe(topico_sensor_umidade);
     } else {
       Serial.println("MQTT desconectado!");
       delay(1000);
@@ -261,6 +306,8 @@ void configMQTT() {
   mqtt.subscribe(topico_lateral_movel);
   mqtt.subscribe(topico_gotejamento);
   mqtt.subscribe(topico_microaspersao);
+  mqtt.subscribe(topico_sensor_temp);
+  mqtt.subscribe(topico_sensor_umidade);
   mqtt.setCallback(callback);
 }
 
@@ -271,17 +318,33 @@ void configPinos() {
   pinMode(D10, OUTPUT);
   pinMode(D9, OUTPUT);
   pinMode(D4, OUTPUT);
+  pinMode(D2, OUTPUT);
   pinMode(A0, INPUT);
 }
 void timer() {
-  long int tempoAtual = millis();
+  minuto = false;
+  hora = false;
+    // long int tempoAtual = millis();
+    // bool tempoAtingido;
 
-  if (tempoAtual - tempoAntigo > 1000) {
-
-    tempoAntigo = millis();
-    contador++;
+    // if (tempoAtual - tempoAntigo > 1000) {
+    //   tempoAtingido = false;
+    //   tempoAntigo = millis();
+    //   contador++;
+    // }
+    // if (contador > 60) {
+    //   contador = 0;
+    //   tempoAntigo = true;
+    //   return tempoAtingido;
+    // }
+    tempo = millis();
+  if (tempo - auxiliar >= 60000 && tempo - auxiliar < 3600000) {
+    minuto = true;
   }
-  return contador;
+  if (tempo - auxiliar >= 3600000) {
+    hora = true;
+    auxiliar = tempo;
+  }
 }
 void temperatura() {
   // pede para o sensor fazer a leitura
@@ -299,26 +362,26 @@ void temperatura() {
   }
 }
 
-void sensorUmidade() {
-  int sensorUmidade = analogRead(A0);
-  if (contador == 60) {
-    contador = 0;
-    if (sensorUmidade > 900) {
-      digitalWrite(D13, 1);
-      digitalWrite(D12, 0);
-      digitalWrite(D11, 0);
-    } else if (sensorUmidade <= 900 && sensorUmidade >= 500) {
-      digitalWrite(D13, 0);
-      digitalWrite(D12, 1);
-      digitalWrite(D11, 0);
-    } else {
-      digitalWrite(D13, 0);
-      digitalWrite(D12, 0);
-      digitalWrite(D11, 1);
-    }
-    Serial.println(sensorUmidade);
-  }
-}
+// void nivelDagua() {
+
+//   if (contador == 60) {
+//     contador = 0;
+//     if (nivelDagua > 900) {
+//       digitalWrite(D13, 1);
+//       digitalWrite(D12, 0);
+//       digitalWrite(D11, 0);
+//     } else if (nivelDagua <= 900 && nivelDagua >= 500) {
+//       digitalWrite(D13, 0);
+//       digitalWrite(D12, 1);
+//       digitalWrite(D11, 0);
+//     } else {
+//       digitalWrite(D13, 0);
+//       digitalWrite(D12, 0);
+//       digitalWrite(D11, 1);
+//     }
+//     Serial.println(nivelDagua);
+//   }
+// }
 
 // Configurar o dispositivo Arduino.
 // Executada uma unica vez quando o dispositivo é ligado.
@@ -327,12 +390,16 @@ void setup() {
   configWifi();
   configMQTT();
   configPinos();
-  contador();
   sensor.begin();
 }
 void loop() {
   if (!mqtt.connected()) {
     reconectar();
+  }
+  if (minuto == true) {
+    postDadosSensorMinuto();
+  } else if (hora == true) {
+    postDadosSensorHora();
   }
   mqtt.loop();
 }
