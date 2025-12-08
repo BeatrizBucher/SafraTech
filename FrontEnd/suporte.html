@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="generator" content="1.0">
+    <title>Suporte
+    </title>
+    <link href="css/bootstrap-5.3.7/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/css/bootstrap5-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/js/bootstrap5-toggle.ecmas.min.js"></script>
+    <script src="https://unpkg.com/mqtt@5.14.0/dist/mqtt.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link href="/css/custon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/sidebars.css">
+    <link rel="stylesheet" href="./css/suporte.css">
+</head>
+
+<body>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">SafraTech</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky pt-3 sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                                aria-current="page" href="index.html">
+                                <span data-feather="home" class="align-text-bottom"></span><i
+                                    class="fa-solid fa-house m-1"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                                aria-current="page" href="campo1.html">
+                                <span data-feather="home" class="align-text-bottom"></span><i
+                                    class="fa-solid fa-newspaper m-1"></i>
+                                Campo 1
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                                aria-current="page" href="campo2.html">
+                                <span data-feather="home" class="align-text-bottom"></span><i
+                                    class="fa-solid fa-newspaper m-1"></i>
+                                Campo 2
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                                aria-current="page" href="campo3.html">
+                                <span data-feather="home" class="align-text-bottom"></span><i
+                                    class="fa-solid fa-newspaper m-1"></i>
+                                Campo 3
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active nav-link active nav-item me-1 nav-link d-inline-flex text-decoration-none rounded text-black fs-6"
+                                aria-current="page" href="suporte.html">
+                                <span data-feather="home" class="align-text-bottom"></span><i
+                                    class="fa-solid fa-gear m-1"></i>
+                                Suporte
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                <div class="d-flex justify-content-between pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h3 d-flex align-items-center gap-2">
+                        <img src="img/safrito.png" alt="Safrito"
+                            style="width:45px; height:45px; border-radius:50%; object-fit:cover;">
+                        Chatbot Safrito
+                    </h1>
+
+
+                </div>
+                <div id="safrito-chat-container" class="shadow p-3 rounded"
+                    style="width:100%; max-width:700px; height:600px; background:white; display:flex; flex-direction:column;">
+
+                    <div style="background:#198754; color:white; padding:12px; border-radius:6px;
+            display:flex; align-items:center; justify-content:center; gap:12px;">
+
+                        <img src="img/safrito.png" alt="Safrito"
+                            style="width:45px; height:45px; border-radius:50%; object-fit:cover;">
+
+                        <h5 class="m-0">Safrito - Assistente Virtual</h5>
+                    </div>
+
+
+                    <div id="safrito-messages"
+                        style="flex:1; overflow-y:auto; margin-top:10px; padding:10px; border:1px solid #ccc; border-radius:6px;">
+                    </div>
+
+                    <div id="safrito-options" style="margin-top:10px; display:flex; flex-direction:column; gap:8px;">
+
+                        <button class="btn btn-success safrito-btn" data-msg="status">
+                            📊 Ver status dos sensores
+                        </button>
+
+                        <button class="btn btn-primary safrito-btn" data-msg="irrigacao">
+                            💧 Controle de irrigação
+                        </button>
+
+                        <button class="btn btn-warning safrito-btn" data-msg="alertas">
+                            ⚠️ Ver alertas
+                        </button>
+
+                        <button class="btn btn-secondary safrito-btn" data-msg="info">
+                            ℹ️ Informações gerais
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const msgBox = document.getElementById("safrito-messages");
+
+        function addMessage(text, sender = "bot") {
+            const div = document.createElement("div");
+            div.classList.add("msg", sender);
+            div.textContent = text;
+            msgBox.appendChild(div);
+            msgBox.scrollTop = msgBox.scrollHeight;
+        }
+
+        function safritoResponse(option) {
+
+            switch (option) {
+
+                case "status":
+                    const tempAgora = localStorage.getItem("temperaturaAgora") || "--";
+                    const umidAgora = localStorage.getItem("umidadeAgora") || "--";
+                    const condAgora = localStorage.getItem("condicaoAgora") || "--";
+
+                    return `📊 *Clima Atual:*\n
+                        🌡 Temperatura: ${tempAgora}°C
+                        💧 Umidade: ${umidAgora}%   
+                        🌦 Condição: ${condAgora}`;
+
+
+                case "irrigacao":
+                    return "💧 Para controlar a irrigação, utilize os botões no menu lateral.\nSe precisar de ajuda, é só chamar!";
+
+                case "alertas":
+                    return "✔️ Nenhum alerta ativo no momento.\nTudo está funcionando normalmente.";
+
+                case "info":
+                    return "ℹ️ Eu sou o Safrito, seu assistente virtual da SafraTech!\nPosso ajudar com sensores, irrigação e muito mais.";
+
+                default:
+                    return "Desculpe, não entendi sua escolha.";
+            }
+        }
+
+        document.querySelectorAll(".safrito-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+
+                const userText = btn.innerText;
+                const option = btn.getAttribute("data-msg");
+
+                addMessage(userText, "user");
+
+                setTimeout(() => {
+                    addMessage(safritoResponse(option), "bot");
+                }, 500);
+            });
+        });
+    </script>
+
+    <footer>
+        <script src="js/bootstrap-5.3.7/bootstrap.bundle.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/dashboard.js"></script>
+        <script src="/js/sidebars.js"></script>
+        <script src="js/informacaoMeteorologica.js"></script>
+    </footer>
+
+</body>
+
+</html>

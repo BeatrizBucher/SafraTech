@@ -26,9 +26,9 @@ async function buscarClima() {
     try {
         const dadosGeoLocalizacao = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${cidade},${estado}&key=811ea33449c14eff99871cd400ffc6f1`);
         const dadosGeo = await dadosGeoLocalizacao.json();
-         latitude = dadosGeo.results[0].geometry.lat;
-         longitude = dadosGeo.results[0].geometry.lng;
-         lat.innerText = `Latitude: ${latitude}`;
+        latitude = dadosGeo.results[0].geometry.lat;
+        longitude = dadosGeo.results[0].geometry.lng;
+        lat.innerText = `Latitude: ${latitude}`;
         long.innerText = `Longitude: ${longitude}`;
         console.log(`Latitude: ${latitude} longitude: ${longitude}`)
     }
@@ -47,7 +47,11 @@ async function buscarClima() {
         cond.innerText = `Condição: ${condicao}`;
         temp.innerText = `Temperatura: ${temperatura}°`;
         umid.innerText = `Umidade: ${umidade}%`;
-        console.log(`temperatura: ${temperatura} condicao: ${condicao} umidade: ${umidade}`)
+        localStorage.setItem("temperaturaAgora", temperatura);
+        localStorage.setItem("umidadeAgora", umidade);
+        localStorage.setItem("condicaoAgora", condicao);
+
+        console.log(`temperatura: ${temperatura} condicao: ${condicao} umidade: ${umidade}`);
     }
     catch (error) {
         console.log(`Erro ao buscar: ${error}`);
