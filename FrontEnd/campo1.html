@@ -8,8 +8,7 @@
   <meta name="author" content="">
   <meta name="generator" content="1.0">
   <title>Campo 1</title>
-  <link href="css/bootstrap-5.3.7/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/css/bootstrap5-toggle.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/js/bootstrap5-toggle.ecmas.min.js"></script>
   <script src="https://unpkg.com/mqtt@5.14.0/dist/mqtt.min.js"></script>
@@ -138,89 +137,89 @@
                   <img src="img/safra1.jpg" class="img-banner shadow" alt="" srcset="">
 
                   <div class="caixa-sensor mt-4 m-2 p-3 text-center">
-                    <i class="fa-solid fa-temperature-three-quarters fa-2x text-danger"></i>
+                    <i id="icon_temperatura" class="fa-solid fa-temperature-three-quarters fa-2x text-danger"></i>
                     <p>Temperatura</p>
-                    <span>Carregando...</span>
+                    <span id="temp">Carregando...</span>
                   </div>
                   <div class="caixa-sensor m-2  mt-4 p-3 text-center">
-                    <i class="fa-solid fa-sun fa-2x text-warning"></i>
+                    <i id="icon_luminosiade"class="fa-solid fa-sun fa-2x text-warning"></i>
                     <p>Luminosidade</p>
-                    <span>Carregando...</span>
+                    <span id="luminosidade">Carregando...</span>
                   </div>
                   <div class="caixa-sensor m-2 p-3 mt-4 text-center">
-                    <i class="fa-solid fa-seedling fa-2x text-success"></i>
+                    <i id="icon_umidade" class="fa-solid fa-seedling fa-2x text-success"></i>
                     <p>Umidade do Solo</p>
-                    <span>Carregando...</span>
+                    <span id="umid">Carregando...</span>
                   </div>
                   <div class="caixa-sensor m-2 p-3 text-center">
-                    <i class="fa-solid fa-droplet fa-2x text-primary"></i>
+                    <i id="icon_umidadeAr" class="fa-solid fa-droplet fa-2x text-primary"></i>
                     <p>Umidade do Ar</p>
-                    <span>Carregando...</span>
+                    <span id="umidadeAr">Carregando...</span>
                   </div>
                   <div class="caixa-sensor m-2 p-3 text-center">
-                    <i class="fa-solid fa-tint fa-2x text-info"></i>
+                    <i  id="icon_caixa1"class="fa-solid fa-tint fa-2x text-info"></i>
                     <p>Caixa D’água</p>
-                    <span>Carregando...</span>
+                    <span id="caixa1">Carregando...</span>
                   </div>
 
                   <div class="caixa-sensor m-2 p-3 text-center">
-                    <i class="fa-solid fa-tint fa-2x text-secondary"></i>
+                    <i id="icon_caixa2" class="fa-solid fa-tint fa-2x text-secondary"></i>
                     <p>Caixa D’água</p>
-                    <span>Carregando...</span>
+                    <span id="caixa2">Carregando...</span>
                   </div>
 
                 </div>
-                    <div class="col-md-3 clima shadow">
-                    <div class="cidadeCor" id="cidade"></div>
-                    <div class="corCabecalho" id="latitude">Buscando...</div>
-                    <div class="corCabecalho" id="longitude">Buscando...</div>                
+                <div class="col-md-3 clima shadow">
+                  <div class="cidadeCor" id="cidade"></div>
+                  <div class="corCabecalho" id="latitude">Buscando...</div>
+                  <div class="corCabecalho" id="longitude">Buscando...</div>
                 </div>
 
-           
+
 
               </div>
-              </div>
+            </div>
 
-              <!-- Histórico -->
-              <div class="row mt-5">
-                <div class="col-12 caixa-historico p-3 mt-2 mb-4">
-                  <h6>Histórico</h6>
-                  <table class="table table-bordered mt-2 ">
-                    <thead>
-                      <tr>
-                        <th>Data</th>
-                        <th>Temperatura</th>
-                        <th>Umidade Solo</th>
-                        <th>Umidade Ar</th>
-                        <th>Caixa D’água</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>10/09</td>
-                        <td>28°C</td>
-                        <td>55%</td>
-                        <td>70%</td>
-                        <td>58%</td>
-                      </tr>
-                      <tr>
-                        <td>09/09</td>
-                        <td>29°C</td>
-                        <td>53%</td>
-                        <td>68%</td>
-                        <td>60%</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+            <!-- Histórico -->
+            <div class="row mt-5">
+              <div class="col-12 caixa-historico p-3 mt-2 mb-4">
+                <h6>Histórico</h6>
+                <table class="table table-bordered mt-2 ">
+                  <thead>
+                    <tr>
+                      <th>Data</th>
+                      <th>Temperatura</th>
+                      <th>Umidade Solo</th>
+                      <th>Umidade Ar</th>
+                      <th>Caixa D’água</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>10/09</td>
+                      <td>28°C</td>
+                      <td>55%</td>
+                      <td>70%</td>
+                      <td>58%</td>
+                    </tr>
+                    <tr>
+                      <td>09/09</td>
+                      <td>29°C</td>
+                      <td>53%</td>
+                      <td>68%</td>
+                      <td>60%</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-
             </div>
 
           </div>
+
         </div>
       </div>
     </div>
+  </div>
   </div>
   <footer>
 
@@ -253,6 +252,29 @@
       //Microaspersao
       const btn_Microaspersao = document.getElementById('btn_Microaspersao');
 
+      //Temperatura
+      const icon_temperatura = document.getElementById('icon_temperatura');
+      let temp = document.getElementById('temp')
+
+      //Umidade
+      const icon_umidade = document.getElementById('icon_umidade');
+      let umid = document.getElementById('umid')
+
+      //luminosidade
+      const icon_luminosidade = document.getElementById('icon_luminosidade');
+      let luminosidade = document.getElementById('luminosidade')
+
+      //umidade ar
+      const icon_umidadeAr = document.getElementById('icon_umidadeAr');
+      let umidadeAr = document.getElementById('umidadeAr')
+
+      //caixa 1
+      const icon_caixa1 = document.getElementById('icon_caixa1');
+      let caixa1 = document.getElementById('caixa1')
+
+      //caixa 2
+      const icon_caixa2 = document.getElementById('icon_caixa2');
+      let caixa2 = document.getElementById('caixa2')
 
       const broker = 'wss://broker.hivemq.com:8884/mqtt';
       const clientID = 'web_client_' + Math.random().toString(16).substr(2, 8);
@@ -272,6 +294,13 @@
       const lateral_movel = 'safratech/lateralmovel/irrigacao/campo1';
       const gotejamento = 'safratech/gotejamento/irrigacao/campo1';
       const microaspersao = 'safratech/microaspersao/irrigacao/campo1';
+      //mais topicos
+      const sensor_temperatura = 'safratech/sensor/topico_sensor_temp/campo1';
+      const sensor_umidade = 'safratech/sensor/topico_sensor_umidade/campo1';
+      const sensor_luminosidade = 'safratech/sensor/topico_sensor_luminosidade/campo1';
+      const sensor_umidAr = 'safratech/sensor/topico_sensor_umidAr/campo1';
+      const sensor_caixa1 = 'safratech/sensor/topico_sensor_caixa1/campo1';
+      const sensor_caixa2 = 'safratech/sensor/topico_sensor_caixa2/campo1';
 
       // sensores
 
@@ -284,287 +313,322 @@
       let status_btn_microaspersao = false;
 
       cliente.on('connect', () => {
-          console.log('Conectado ao BROKER.')
+        console.log('Conectado ao BROKER.')
 
-          cliente.subscribe((convencional), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((pivo_central), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((autopropelido), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((lateral_movel), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((gotejamento), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-          cliente.subscribe((microaspersao), (err) => {
-              if (!err) {
-                  console.log('conectado no topico');
-              }
-
-          });
-
-
-    
-
-      });
-
-      // Verefique se existe mensagem no tópico inscrito.
-      cliente.on('message', (topicos, message) => {
-          const mensagem = message.toString();
-
-          //convencional
-          if (topicos === convencional) {
-              const estadoAtual = btn_Convencional.checked;
-              if (mensagem === 'off') {
-                  const estado = false;
-                  if (estado !== estadoAtual) {
-                      status_btn_convencional = true; // trava
-                      btn_Convencional.bootstrapToggle(mensagem);
-                      status_btn_convencional = false; //libera
-                  }
-              }
-
-              if (mensagem === 'on') {
-                  const estado = true;
-                  if(estado !== estadoAtual){
-                      status_btn_convencional = true; // trava
-                      btn_Convencional.bootstrapToggle(mensagem);
-                      status_btn_convencional = false; // libera
-                  }
-              }
+        cliente.subscribe((convencional), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${convencional}`);
           }
 
-          //pivo central
-          if (topicos === pivo_central) {
-              const estadoAtual = btn_PivoCentral.checked;
-              if (mensagem === 'off') {
-                  const estado = false;
-                  if (estado !== estadoAtual) {
-                      status_btn_pivocentral = true; // trava
-                      btn_PivoCentral.bootstrapToggle(mensagem);
-                      status_btn_pivocentral = false; //libera
-                  }
-              }
+        });
 
-              if (mensagem === 'on') {
-                  const estado = true;
-                  if(estado !== estadoAtual){
-                      status_btn_pivocentral = true; // trava
-                      btn_PivoCentral.bootstrapToggle(mensagem);
-                      status_btn_pivocentral = false; // libera
-                  }
-              }
+        cliente.subscribe((pivo_central), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${pivo_central}`);
           }
 
-          //autopropelido
-          if (topicos === autopropelido) {
-              const estadoAtual = btn_Autopropelido.checked;
-              if (mensagem === 'off') {
-                  const estado = false;
-                  if (estado !== estadoAtual) {
-                      status_btn_autopropelido = true; // trava
-                      btn_Autopropelido.bootstrapToggle(mensagem);
-                      status_btn_autopropelido = false; //libera
-                  }
-              }
+        });
 
-              if (mensagem === 'on') {
-                  const estado = true;
-                  if(estado !== estadoAtual){
-                      status_btn_autopropelido = true; // trava
-                      btn_Autopropelido.bootstrapToggle(mensagem);
-                      status_btn_autopropelido = false; // libera
-                  }
-              }
+        cliente.subscribe((autopropelido), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${autopropelido}`);
           }
 
-          //lateral movel
-          if (topicos === lateral_movel) {
-              const estadoAtual = btn_LateralMovel.checked;
-              if (mensagem === 'off') {
-                  const estado = false;
-                  if (estado !== estadoAtual) {
-                      status_btn_lateralmovel= true; // trava
-                      btn_LateralMovel.bootstrapToggle(mensagem);
-                      status_btn_lateralmovel = false; //libera
-                  }
-              }
+        });
 
-              if (mensagem === 'on') {
-                  const estado = true;
-                  if(estado !== estadoAtual){
-                      status_btn_lateralmovel = true; // trava
-                      btn_LateralMovel.bootstrapToggle(mensagem);
-                      status_btn_lateralmovel = false; // libera
-                  }
-              }
+        cliente.subscribe((lateral_movel), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${lateral_movel}`);
           }
 
-          //gotejamento
-          if (topicos === gotejamento) {
-              const estadoAtual = btn_Gotejamento.checked;
-              if (mensagem === 'off') {
-                  const estado = false;
-                  if (estado !== estadoAtual) {
-                      status_btn_gotejamento = true; // trava
-                      btn_Gotejamento.bootstrapToggle(mensagem);
-                      status_btn_gotejamento = false; //libera
-                  }
-              }
+        });
 
-              if (mensagem === 'on') {
-                  const estado = true;
-                  if(estado !== estadoAtual){
-                      status_btn_gotejamento = true; // trava
-                      btn_Gotejamento.bootstrapToggle(mensagem);
-                      status_btn_gotejamento = false; // libera
-                  }
-              }
+        cliente.subscribe((gotejamento), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${gotejamento}`);
           }
 
-          //microaspersao
-          if (topicos === microaspersao) {
-              const estadoAtual = btn_Microaspersao.checked;
-              if (mensagem === 'off') {
-                  const estado = false;
-                  if (estado !== estadoAtual) {
-                      status_btn_microaspersao = true; // trava
-                      btn_Microaspersao.bootstrapToggle(mensagem);
-                      status_btn_microaspersao = false; //libera
-                  }
-              }
+        });
 
-              if (mensagem === 'on') {
-                  const estado = true;
-                  if(estado !== estadoAtual){
-                      status_btn_microaspersao = true; // trava
-                      btn_Microaspersao.bootstrapToggle(mensagem);
-                      status_btn_microaspersao = false; // libera
-                  }
-              }
+        cliente.subscribe((microaspersao), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${microaspersao}`);
           }
+
+        });
+
+        cliente.subscribe((sensor_umidade), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${sensor_umidade}`);
+          }
+
+        });
+        cliente.subscribe((sensor_temperatura), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${sensor_temperatura}`);
+          }
+
+        });
 
 
 
 
       });
 
-//1
-      btn_Convencional.bootstrapToggle();
-      btn_Convencional.onchange = () => {
-          if (status_btn_convencional) return; 
-          btn_Convencional.checked ? post_Convencional('ligado') : post_Convencional('desligado');
-      }
+      // Verefique se existe mensagem no tópico inscrito.
+      cliente.on('message', (topicos, message) => {
+        const mensagem = message.toString();
+        console.log(`Mensagem recebida no tópico ${topicos}: ${message}`);
 
-      function post_Convencional(estado) {
-          if (estado === 'desligado') {
-            console.log(convencional)
-              cliente.publish(convencional, 'off')
+        //convencional
+        if (topicos === convencional) {
+          const estadoAtual = btn_Convencional.checked;
+          if (mensagem === 'off') {
+            const estado = false;
+            if (estado !== estadoAtual) {
+              status_btn_convencional = true; // trava
+              btn_Convencional.bootstrapToggle(mensagem);
+              status_btn_convencional = false; //libera
+            }
           }
-          else {
-            console.log(convencional)
 
-              cliente.publish(convencional, 'on')
+          if (mensagem === 'on') {
+            const estado = true;
+            if (estado !== estadoAtual) {
+              status_btn_convencional = true; // trava
+              btn_Convencional.bootstrapToggle(mensagem);
+              status_btn_convencional = false; // libera
+            }
           }
-      }
-//2
-      btn_PivoCentral.bootstrapToggle();
-      btn_PivoCentral.onchange = () => {
-          if (status_btn_pivocentral) return; 
-          btn_PivoCentral.checked ? post_PivoCentral('ligado') : post_PivoCentral('desligado');
-      }
-      function post_PivoCentral(estado) {
-          if (estado === 'desligado') {
-              cliente.publish(pivo_central, 'off')
-          }
-          else {
-              cliente.publish(pivo_central, 'on')
-          }
-      }
-//3
-      btn_Autopropelido.bootstrapToggle();
-      btn_Autopropelido.onchange = () => {
-          if (status_btn_autopropelido) return; 
-          btn_Autopropelido.checked ? post_Autopropelido('ligado') : post_Autopropelido('desligado');
-      }
-      function post_Autopropelido(estado) {
-          if (estado === 'desligado') {
-              cliente.publish(autopropelido, 'off')
-          }
-          else {
-              cliente.publish(autopropelido, 'on')
-          }
-      }
-//4
-      btn_LateralMovel.bootstrapToggle();
-      btn_LateralMovel.onchange = () => {
-          if (status_btn_lateralmovel) return; 
-          btn_LateralMovel.checked ? post_LateralMovel('ligado') : post_LateralMovel('desligado');
-      }
-      function post_LateralMovel(estado) {
-          if (estado === 'desligado') {
-              cliente.publish(lateral_movel, 'off')
-          }
-          else {
-              cliente.publish(lateral_movel, 'on')
-          }
-      }
-//5
-      btn_Gotejamento.bootstrapToggle();
-      btn_Gotejamento.onchange = () => {
-          if (status_btn_gotejamento) return; 
-          btn_Gotejamento.checked ? post_Gotejamento('ligado') : post_Gotejamento('desligado');
-      }
-      function post_Gotejamento(estado) {
-          if (estado === 'desligado') {
-              cliente.publish(gotejamento, 'off')
-          }
-          else {
-              cliente.publish(gotejamento, 'on')
-          }
-      }
-//6
-      btn_Microaspersao.bootstrapToggle();
-      btn_Microaspersao.onchange = () => {
-          if (status_btn_microaspersao) return; 
-          btn_Microaspersao.checked ? post_Microaspersao('ligado') : post_Microaspersao('desligado');
-      }
-      function post_Microaspersao(estado) {
-          if (estado === 'desligado') {
-              cliente.publish(microaspersao, 'off')
-          }
-          else {
-              cliente.publish(microaspersao, 'on')
-          }
-      }
+        }
 
-  });
-</script>
+        //pivo central
+        if (topicos === pivo_central) {
+          const estadoAtual = btn_PivoCentral.checked;
+          if (mensagem === 'off') {
+            const estado = false;
+            if (estado !== estadoAtual) {
+              status_btn_pivocentral = true; // trava
+              btn_PivoCentral.bootstrapToggle(mensagem);
+              status_btn_pivocentral = false; //libera
+            }
+          }
+
+          if (mensagem === 'on') {
+            const estado = true;
+            if (estado !== estadoAtual) {
+              status_btn_pivocentral = true; // trava
+              btn_PivoCentral.bootstrapToggle(mensagem);
+              status_btn_pivocentral = false; // libera
+            }
+          }
+        }
+
+        //autopropelido
+        if (topicos === autopropelido) {
+          const estadoAtual = btn_Autopropelido.checked;
+          if (mensagem === 'off') {
+            const estado = false;
+            if (estado !== estadoAtual) {
+              status_btn_autopropelido = true; // trava
+              btn_Autopropelido.bootstrapToggle(mensagem);
+              status_btn_autopropelido = false; //libera
+            }
+          }
+
+          if (mensagem === 'on') {
+            const estado = true;
+            if (estado !== estadoAtual) {
+              status_btn_autopropelido = true; // trava
+              btn_Autopropelido.bootstrapToggle(mensagem);
+              status_btn_autopropelido = false; // libera
+            }
+          }
+        }
+
+        //lateral movel
+        if (topicos === lateral_movel) {
+          const estadoAtual = btn_LateralMovel.checked;
+          if (mensagem === 'off') {
+            const estado = false;
+            if (estado !== estadoAtual) {
+              status_btn_lateralmovel = true; // trava
+              btn_LateralMovel.bootstrapToggle(mensagem);
+              status_btn_lateralmovel = false; //libera
+            }
+          }
+
+          if (mensagem === 'on') {
+            const estado = true;
+            if (estado !== estadoAtual) {
+              status_btn_lateralmovel = true; // trava
+              btn_LateralMovel.bootstrapToggle(mensagem);
+              status_btn_lateralmovel = false; // libera
+            }
+          }
+        }
+
+        //gotejamento
+        if (topicos === gotejamento) {
+          const estadoAtual = btn_Gotejamento.checked;
+          if (mensagem === 'off') {
+            const estado = false;
+            if (estado !== estadoAtual) {
+              status_btn_gotejamento = true; // trava
+              btn_Gotejamento.bootstrapToggle(mensagem);
+              status_btn_gotejamento = false; //libera
+            }
+          }
+
+          if (mensagem === 'on') {
+            const estado = true;
+            if (estado !== estadoAtual) {
+              status_btn_gotejamento = true; // trava
+              btn_Gotejamento.bootstrapToggle(mensagem);
+              status_btn_gotejamento = false; // libera
+            }
+          }
+        }
+
+        //microaspersao
+        if (topicos === microaspersao) {
+          const estadoAtual = btn_Microaspersao.checked;
+          if (mensagem === 'off') {
+            const estado = false;
+            if (estado !== estadoAtual) {
+              status_btn_microaspersao = true; // trava
+              btn_Microaspersao.bootstrapToggle(mensagem);
+              status_btn_microaspersao = false; //libera
+            }
+          }
+
+          if (mensagem === 'on') {
+            const estado = true;
+            if (estado !== estadoAtual) {
+              status_btn_microaspersao = true; // trava
+              btn_Microaspersao.bootstrapToggle(mensagem);
+              status_btn_microaspersao = false; // libera
+            }
+          }
+        }
+
+        //temperatura
+        if (topicos === sensor_temperatura) {
+          temp.innerText = `${mensagem}°`;
+          if (mensagem <= 24) {
+            icon_temperatura.className = 'fa-solid fa-temperature-high fs-1 text-success';
+          } else if (mensagem > 24) {
+            icon_temperatura.className = 'fa-solid fa-temperature-high fs-1 text-danger';
+          }
+        }
+      
+       // Umidade
+       if (topicos === sensor_umidade) {
+         console.log(mensagem)
+          umid.innerText = `${mensagem}`;
+          if (mensagem <= 40) {
+            icon_umidade.className = 'fa-solid fa-droplet fa-beat-fade fs-1 text-danger';
+          } else if (mensagem > 40 && mensagem < 70) {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-success';
+          } else {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-warning';
+          }
+        }
+
+});
+
+    //1
+    btn_Convencional.bootstrapToggle();
+    btn_Convencional.onchange = () => {
+      if (status_btn_convencional) return;
+      btn_Convencional.checked ? post_Convencional('ligado') : post_Convencional('desligado');
+    }
+
+    function post_Convencional(estado) {
+      if (estado === 'desligado') {
+        console.log(convencional)
+        cliente.publish(convencional, 'off')
+      }
+      else {
+        console.log(convencional)
+
+        cliente.publish(convencional, 'on')
+      }
+    }
+    //2
+    btn_PivoCentral.bootstrapToggle();
+    btn_PivoCentral.onchange = () => {
+      if (status_btn_pivocentral) return;
+      btn_PivoCentral.checked ? post_PivoCentral('ligado') : post_PivoCentral('desligado');
+    }
+    function post_PivoCentral(estado) {
+      if (estado === 'desligado') {
+        cliente.publish(pivo_central, 'off')
+      }
+      else {
+        cliente.publish(pivo_central, 'on')
+      }
+    }
+    //3
+    btn_Autopropelido.bootstrapToggle();
+    btn_Autopropelido.onchange = () => {
+      if (status_btn_autopropelido) return;
+      btn_Autopropelido.checked ? post_Autopropelido('ligado') : post_Autopropelido('desligado');
+    }
+    function post_Autopropelido(estado) {
+      if (estado === 'desligado') {
+        cliente.publish(autopropelido, 'off')
+      }
+      else {
+        cliente.publish(autopropelido, 'on')
+      }
+    }
+    //4
+    btn_LateralMovel.bootstrapToggle();
+    btn_LateralMovel.onchange = () => {
+      if (status_btn_lateralmovel) return;
+      btn_LateralMovel.checked ? post_LateralMovel('ligado') : post_LateralMovel('desligado');
+    }
+    function post_LateralMovel(estado) {
+      if (estado === 'desligado') {
+        cliente.publish(lateral_movel, 'off')
+      }
+      else {
+        cliente.publish(lateral_movel, 'on')
+      }
+    }
+    //5
+    btn_Gotejamento.bootstrapToggle();
+    btn_Gotejamento.onchange = () => {
+      if (status_btn_gotejamento) return;
+      btn_Gotejamento.checked ? post_Gotejamento('ligado') : post_Gotejamento('desligado');
+    }
+    function post_Gotejamento(estado) {
+      if (estado === 'desligado') {
+        cliente.publish(gotejamento, 'off')
+      }
+      else {
+        cliente.publish(gotejamento, 'on')
+      }
+    }
+    //6
+    btn_Microaspersao.bootstrapToggle();
+    btn_Microaspersao.onchange = () => {
+      if (status_btn_microaspersao) return;
+      btn_Microaspersao.checked ? post_Microaspersao('ligado') : post_Microaspersao('desligado');
+    }
+    function post_Microaspersao(estado) {
+      if (estado === 'desligado') {
+        cliente.publish(microaspersao, 'off')
+      }
+      else {
+        cliente.publish(microaspersao, 'on')
+      }
+    }
+
+    });
+  </script>
 
 </body>
+
 </html>
