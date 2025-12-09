@@ -93,17 +93,17 @@
               <h6>Controles</h6>
               <div class="mb-2">
                 <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle text-success"></i>Convencional</span>
-                <input id="btn_Convencional" type="checkbox" checked data-toggle="toggle" data-size="sm"
+                <input id="btn_Convencional" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success"
                   data-onstyle="success">
               </div>
               <div class="mb-2">
                 <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Pivô Central</span>
-                <input id="btn_PivoCentral" type="checkbox" checked data-toggle="toggle" data-size="sm"
+                <input id="btn_PivoCentral" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success"
                   data-onstyle="success">
               </div>
               <div class="mb-2">
                 <span><i class="fa-solid fa-faucet me-2 icon-caixa-controle"></i>Autopropelido</span>
-                <input id="btn_Autopropelido" type="checkbox" checked data-toggle="toggle" data-size="sm"
+                <input id="btn_Autopropelido" type="checkbox" data-toggle="toggle" data-size="sm" data-onstyle="success"
                   data-onstyle="success">
               </div>
               <div class="mb-2">
@@ -295,7 +295,7 @@
       const gotejamento = 'safratech/gotejamento/irrigacao/campo1';
       const microaspersao = 'safratech/microaspersao/irrigacao/campo1';
       //mais topicos
-      const sensor_temperatura = 'safratech/sensor/topico_sensor_temp/campo1';
+      const sensor_temperatura = 'safratech/sensor/topico_sensor_temperatura/campo1';
       const sensor_umidade = 'safratech/sensor/topico_sensor_umidade/campo1';
       const sensor_luminosidade = 'safratech/sensor/topico_sensor_luminosidade/campo1';
       const sensor_umidAr = 'safratech/sensor/topico_sensor_umidAr/campo1';
@@ -366,6 +366,30 @@
         cliente.subscribe((sensor_temperatura), (err) => {
           if (!err) {
             console.log(`Conectado no tópico: ${sensor_temperatura}`);
+          }
+
+        });
+        cliente.subscribe((sensor_luminosidade), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${sensor_luminosidade}`);
+          }
+
+        });
+        cliente.subscribe((sensor_umidAr), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${sensor_umidAr}`);
+          }
+
+        });
+        cliente.subscribe((sensor_caixa1), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${sensor_caixa1}`);
+          }
+
+        });
+        cliente.subscribe((sensor_caixa2), (err) => {
+          if (!err) {
+            console.log(`Conectado no tópico: ${sensor_caixa2}`);
           }
 
         });
@@ -515,23 +539,70 @@
         //temperatura
         if (topicos === sensor_temperatura) {
           temp.innerText = `${mensagem}°`;
-          if (mensagem <= 24) {
-            icon_temperatura.className = 'fa-solid fa-temperature-high fs-1 text-success';
-          } else if (mensagem > 24) {
+          if (mensagem <= 12) {
             icon_temperatura.className = 'fa-solid fa-temperature-high fs-1 text-danger';
+          }
+          else if (mensagem > 12 && mensagem < 30) {
+            icon_temperatura.className = 'fa-solid fa-temperature-high fs-1 text-success';
+          } else {
+          icon_temperatura.className = 'fa-solid fa-temperature-high fs-1 text-danger';
           }
         }
       
        // Umidade
        if (topicos === sensor_umidade) {
          console.log(mensagem)
-          umid.innerText = `${mensagem}`;
+          umid.innerText = `${mensagem}%`;
+          if (mensagem <= 20) {
+            icon_umidade.className = 'fa-solid fa-droplet fa-beat-fade fs-1 text-danger';
+          } else if (mensagem > 20 && mensagem < 45) {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-success';
+          } else {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-danger';
+          }
+        }
+       if (topicos === sensor_luminosidade) {
+         console.log(mensagem)
+          luminosidade.innerText = `${mensagem} lux`;
+          if (mensagem <= 5000) {
+            icon_umidade.className = 'fa-solid fa-droplet fa-beat-fade fs-1 text-danger';
+          } else if (mensagem > 5000 && mensagem < 50000) {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-success';
+          } else {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-danger';
+          }
+        }
+       if (topicos === sensor_umidAr) {
+         console.log(mensagem)
+          umidadeAr.innerText = `${mensagem}%`;
           if (mensagem <= 40) {
             icon_umidade.className = 'fa-solid fa-droplet fa-beat-fade fs-1 text-danger';
           } else if (mensagem > 40 && mensagem < 70) {
             icon_umidade.className = 'fa-solid fa-droplet fs-1 text-success';
           } else {
-            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-warning';
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-danger';
+          }
+        }
+       if (topicos === sensor_caixa1) {
+         console.log(mensagem)
+          caixa1.innerText = `${mensagem}%`;
+          if (mensagem <= 20) {
+            icon_umidade.className = 'fa-solid fa-droplet fa-beat-fade fs-1 text-danger';
+          } else if (mensagem > 20 && mensagem < 80) {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-success';
+          } else {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-danger';
+          }
+        }
+       if (topicos === sensor_caixa2) {
+         console.log(mensagem)
+          caixa2.innerText = `${mensagem}%`;
+          if (mensagem <= 20) {
+            icon_umidade.className = 'fa-solid fa-droplet fa-beat-fade fs-1 text-danger';
+          } else if (mensagem > 20 && mensagem < 80) {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-success';
+          } else {
+            icon_umidade.className = 'fa-solid fa-droplet fs-1 text-danger';
           }
         }
 

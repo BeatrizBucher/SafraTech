@@ -315,19 +315,24 @@ void timer() {
   // }
   tempo = millis();
   if (tempo % 5000 == 0) {
-    int sensorNivelDagua = analogRead(A0);
-    String teste = String(sensorNivelDagua);
-    int valorTemp = random(10,20);
-    int valorLuminosidade = random(10,20);
-    int valorUmidAr = random(10,20);
-    int valorCaixa1 = random(10,20);
-    int valorCaixa2 = random(10,20);
-    mqtt.publish("safratech/sensor/topico_sensor_umidade/campo1", teste.c_str());
-    mqtt.publish("safratech/sensor/topico_sensor_temperatura/campo1", valorTemp);
-    mqtt.publish("safratech/sensor/topico_sensor_luminosidade/campo1", valorLuminosidade);
-    mqtt.publish("safratech/sensor/topico_sensor_umidAr/campo1", valorUmidAr);
-    mqtt.publish("safratech/sensor/topico_sensor_caixa1/campo1", valorCaixa1);
-    mqtt.publish("safratech/sensor/topico_sensor_caixa2/campo1", valorCaixa2);
+    int valorNivelDagua = analogRead(A0);
+    String valorNivelDaguaFormatado = String(valorNivelDagua);
+    int valorTemp = random(18, 43);
+    String valorTempFormatado = String(valorTemp);
+    int valorLuminosidade = random(0,100000);
+    String valorLuminosidadeFormatado = String(valorLuminosidade);
+    int valorUmidAr = random(0,101);
+    String valorUmidArFormatado = String(valorUmidAr);
+    int valorCaixa1 = random(0,101);
+    String valorCaixa1Formatado = String(valorCaixa1);
+    int valorCaixa2 = random(0,101);
+    String valorCaixa2Formatado = String(valorCaixa2);
+    mqtt.publish("safratech/sensor/topico_sensor_umidade/campo1", valorNivelDaguaFormatado.c_str());
+    mqtt.publish("safratech/sensor/topico_sensor_temperatura/campo1", valorTempFormatado.c_str());
+    mqtt.publish("safratech/sensor/topico_sensor_luminosidade/campo1", valorLuminosidadeFormatado.c_str());
+    mqtt.publish("safratech/sensor/topico_sensor_umidAr/campo1", valorUmidArFormatado.c_str());
+    mqtt.publish("safratech/sensor/topico_sensor_caixa1/campo1", valorCaixa1Formatado.c_str());
+    mqtt.publish("safratech/sensor/topico_sensor_caixa2/campo1", valorCaixa2Formatado.c_str());
   }
   if (tempo >= 3600000) {
     int sensorNivelDagua = analogRead(A0);
