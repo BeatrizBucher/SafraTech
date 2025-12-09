@@ -15,7 +15,7 @@ conexao.query("select 1")
 .then(()=>{
     console.log("conectado com sucesso")
     app.listen(PORT, function(){
-        console.log("Servidor executando na url:http://localhost:3001")
+        console.log("Servidor executando na url:http://localhost:3002")
     })
 })
 .catch(erro=>console.log("Falha na conexão"))

@@ -17,7 +17,7 @@
 OneWire barramento(PINO_SENSOR_TEMP);
 DallasTemperature sensor(&barramento);
 // Definição da URL da api.
-const char* cadastrarEventos = "http://10.136.245.75:3001/cadastrarEventos";
+const char* cadastrarEventos = "http://192.168.137.82:3002/cadastrarEventos";
 
 unsigned long tempo = 0;
 unsigned long auxiliar = 0;
@@ -96,6 +96,8 @@ bool postDadosJson(String informacao, const int id, unsigned int length) {
   int code = http.POST(corpo);
   //captura o corpo da resposta (payload) do servidor
   String responsePayload = http.getString();
+  Serial.println(code);
+  Serial.println(responsePayload);
   //imprime o codigo de status e a resposta no monitor serial
   Serial.print("Código de status HTTP:");
   Serial.print(code);
@@ -122,12 +124,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_convencional) == 0) {
     if (mensagem == "on") {
       liga_luz_convencional;
-      if (digitalRead(D13) && hora == true) {
+      if (digitalRead(D13)) {
         postDadosJson(mensagem, 1, mensagem.length());
       }
     } else if (mensagem == "off") {
       desliga_luz_convencional;
-      if (!digitalRead(D13) && hora == true) {
+      if (!digitalRead(D13)) {
         postDadosJson(mensagem, 1, mensagem.length());
       }
     } else {
@@ -139,12 +141,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_pivo_central) == 0) {
     if (mensagem == "on") {
       liga_luz_pivo_central;
-      if (digitalRead(D12) && hora == true) {
+      if (digitalRead(D12)) {
         postDadosJson(mensagem, 2, mensagem.length());
       }
     } else if (mensagem == "off") {
       desliga_luz_pivo_central;
-      if (!digitalRead(D12) && hora == true) {
+      if (!digitalRead(D12)) {
         postDadosJson(mensagem, 2, mensagem.length());
       }
     } else {
@@ -156,12 +158,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_autopropelido) == 0) {
     if (mensagem == "on") {
       liga_luz_autopropelido;
-      if (digitalRead(D11) && hora == true) {
+      if (digitalRead(D11)) {
         postDadosJson(mensagem, 3, mensagem.length());
       }
     } else if (mensagem == "off") {
       desliga_luz_autopropelido;
-      if (!digitalRead(D11) && hora == true) {
+      if (!digitalRead(D11)) {
         postDadosJson(mensagem, 3, mensagem.length());
       }
     } else {
@@ -173,12 +175,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_lateral_movel) == 0) {
     if (mensagem == "on") {
       liga_luz_lateral_movel;
-      if (digitalRead(D10) && hora == true) {
+      if (digitalRead(D10)) {
         postDadosJson(mensagem, 4, mensagem.length());
       }
     } else if (mensagem == "off") {
       desliga_luz_lateral_movel;
-      if (!digitalRead(D10) && hora == true) {
+      if (!digitalRead(D10)) {
         postDadosJson(mensagem, 4, mensagem.length());
       }
     } else {
@@ -190,12 +192,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_gotejamento) == 0) {
     if (mensagem == "on") {
       liga_luz_gotejamento;
-      if (digitalRead(D9) && hora == true) {
+      if (digitalRead(D9)) {
         postDadosJson(mensagem, 5, mensagem.length());
       }
     } else if (mensagem == "off") {
       desliga_luz_gotejamento;
-      if (!digitalRead(D9) && hora == true) {
+      if (!digitalRead(D9)) {
         postDadosJson(mensagem, 5, mensagem.length());
       }
     } else {
@@ -207,12 +209,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, topico_microaspersao) == 0) {
     if (mensagem == "on") {
       liga_luz_microaspersao;
-      if (digitalRead(D4) && hora == true) {
+      if (digitalRead(D4)) {
         postDadosJson(mensagem, 6, mensagem.length());
       }
     } else if (mensagem == "off") {
       desliga_luz_microaspersao;
-      if (!digitalRead(D4) && hora == true) {
+      if (!digitalRead(D4)) {
         postDadosJson(mensagem, 6, mensagem.length());
       }
     } else {
@@ -261,7 +263,7 @@ void configSerial() {
 
 // Efetua a configuração da conexão Wi-fi.
 void configWifi() {
-  WiFi.begin("C4", "12345678");
+  WiFi.begin("IOT", "iotsenai927");
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -334,10 +336,25 @@ void timer() {
     mqtt.publish("safratech/sensor/topico_sensor_caixa1/campo1", valorCaixa1Formatado.c_str());
     mqtt.publish("safratech/sensor/topico_sensor_caixa2/campo1", valorCaixa2Formatado.c_str());
   }
-  if (tempo >= 3600000) {
-    int sensorNivelDagua = analogRead(A0);
-    String sensorNivelDaguaFormatado = String(sensorNivelDagua);
-    postDadosJson(sensorNivelDaguaFormatado, 10, sensorNivelDaguaFormatado.length());
+  if (tempo % 3600000 == 0) {
+    int valorNivelDagua = analogRead(A0);
+    String valorNivelDaguaFormatado = String(valorNivelDagua);
+    int valorTemp = random(18, 43);
+    String valorTempFormatado = String(valorTemp);
+    int valorLuminosidade = random(0,100000);
+    String valorLuminosidadeFormatado = String(valorLuminosidade);
+    int valorUmidAr = random(0,101);
+    String valorUmidArFormatado = String(valorUmidAr);
+    int valorCaixa1 = random(0,101);
+    String valorCaixa1Formatado = String(valorCaixa1);
+    int valorCaixa2 = random(0,101);
+    String valorCaixa2Formatado = String(valorCaixa2);
+    postDadosJson(valorNivelDaguaFormatado, 8, valorNivelDaguaFormatado.length());
+    postDadosJson(valorTempFormatado, 7, valorTempFormatado.length());
+    postDadosJson(valorLuminosidadeFormatado, 10, valorLuminosidadeFormatado.length());
+    postDadosJson(valorUmidArFormatado, 9, valorUmidArFormatado.length());
+    postDadosJson(valorCaixa1Formatado, 11, valorCaixa1Formatado.length());
+    postDadosJson(valorCaixa2Formatado, 12, valorCaixa2Formatado.length());
     auxiliar = tempo;
   }
 }
